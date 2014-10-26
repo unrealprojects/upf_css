@@ -1,0 +1,18 @@
+@import "-variables";
+@import "../../../scss/upf/upf";
+
+body{
+    background: $C-Cyan-6;
+}
+
+.Test
+{
+    max-width: 1600px;
+    margin: 0 auto;
+    [class*=Node-]
+    {
+        padding: 0.5rem;
+        background:     $C-Red-4;
+        color:          black;
+    }
+}

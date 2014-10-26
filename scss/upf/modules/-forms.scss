@@ -1,0 +1,394 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// VARIABLES
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$Control-Height:				30px;										// Shared height for all controls
+$Control-Rounding:				4px;										// Border-Radius
+$Control-BRDC-Focus: 			#5ec0f0;
+$Control-Shadow-Focus:			rgba($Control-BRDC-Focus, .6);
+$Control-BRDW:					1px;										// Border-Width
+$Control-Font-Size:				14px;
+$Control-Line-Height:			1;
+$Control-Padding-Vertical:		6px;
+$Control-Padding-Horizontal:	10px;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$Control-Editable-BGC:			#fbfbfb;									// Background-Color
+$Control-Editable-BRDC:			#bbb;										// Border-color
+$Control-Editable-BRDC-Focus:	$Control-BRDC-Focus;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$Control-Button-BRDC:			#bbb;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$Control-Textarea-Rows:			2;
+$Control-Textarea-Rows-Focus:	3;
+$Control-Textarea-Line-Height:	1.45;
+$Control-Textarea-Height:		(($Control-Font-Size * $Control-Textarea-Line-Height) * $Control-Textarea-Rows) + ($Control-Padding-Vertical * 2) + ($Control-BRDW * 2);
+$Control-Textarea-Height-Focus:	(($Control-Font-Size * $Control-Textarea-Line-Height) * $Control-Textarea-Rows-Focus) + ($Control-Padding-Vertical * 2) + ($Control-BRDW * 2);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$Control-Addon-C:				#eee;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$Control-Animation-Duration:	.3s;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+$Checkbox-Margin:  0px;
+$Checkbox-Height: $Control-Height - $Checkbox-Margin;
+$Checkbox-Width: $Checkbox-Height * 2;
+$Checkbox-Border: $Control-Border-Width;
+$Checkbox-Fnt-Size: 14px;
+$Checkbox-Border-Radius: $Checkbox-Height;
+$Checkbox-Toggle-Spacing: 2px;
+$Checkbox-Toggle-Diameter: $Checkbox-Height - ($Checkbox-Toggle-Spacing * 2) - ($Checkbox-Border * 2);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// PROTOTYPES
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+%Border-Box
+{
+	box-sizing:					border-box;
+	-moz-box-sizing: 			border-box;
+}
+
+%Control-Base					// Shared styles for all control elements
+{
+
+	@extend 					%Border-Box;
+	@extend						%Clickable;
+
+	height:						$Control-Height;
+
+	border-radius:				$Control-Rounding;
+	outline:					none;
+	vertical-align:				middle;
+
+	font-family: 				inherit;
+	font-size:					$Control-Font-Size;
+	line-height: 				$Control-Line-Height;
+
+}
+
+%Control-Editable				// Shared styles for all non-button elements
+{
+	@extend 					%Control-Editable-Animation;
+	padding:					$Control-Padding-Vertical $Control-Padding-Horizontal;
+
+	border:						$Control-BRDW $Control-Editable-BRDC solid;
+
+	background-color: 			transparent;//$Control-Editable-BGC;
+	&:focus
+	{
+		border-color:	 		$Control-Editable-BRDC-Focus;
+		box-shadow:				0 0 10px $Control-Shadow-Focus;
+	}
+}
+
+%Control-Select					// Styles for "select" element only
+{
+	padding:					0 $Control-Padding-Horizontal;
+}
+
+%Control-Textarea				// Styles for "textarea" element only
+{
+	height: 					$Control-Textarea-Height;
+	resize: 					vertical;
+	font-family: 				inherit;
+	line-height: 				$Control-Textarea-Line-Height;
+
+	&:focus
+	{
+		height: 				$Control-Textarea-Height-Focus;
+	}
+}
+
+%Control-Editable-Animation
+{
+	@include 					Transitions(
+								#{
+								height $Control-Animation-Duration,
+								border-color $Control-Animation-Duration,
+								box-shadow $Control-Animation-Duration,
+								background-color $Control-Animation-Duration,
+								color $Control-Animation-Duration});
+}
+
+%Control-Button-Animation
+{
+	@include 					Transitions(
+								#{
+								border-color $Control-Animation-Duration,
+								box-shadow $Control-Animation-Duration,
+								background-color $Control-Animation-Duration,
+								color $Control-Animation-Duration});
+}
+
+%Control-Button					// Shared styles for all button-like elements
+{
+	@extend 					%Control-Button-Animation;
+	padding: 					$Control-Padding-Vertical $Control-Padding-Horizontal;
+	border:						$Control-BRDW $Control-Button-BRDC solid;
+	box-shadow:					0 1px 1px rgba(0,0,0,0.2),
+								0 1px 0 rgba(255,255,255,0.3) inset;
+}
+
+%Control-Button-Primary
+{
+	background-color: 			$C-Blue-2;
+	border-color:				$C-Blue-1;
+	color:						white;
+	&:hover
+	{
+		background-color: 		$C-Blue-1;
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CONTROL-SECTION
+// Contains CONTROL-GROUPS. Separated wdith other CONTROL-SECTIONS by gap
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.Control-Section
+{
+	& + .Control-Section
+	{
+		margin-top: 			30px;
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CONTROL-GROUP
+// Contains set of form controls. Separated width other CONTROL-GROUPS by gap
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.Control-Group
+{
+	@extend 					%Clearfix;
+	padding: 					15px 0;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// TAG RESTYLING
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+input,
+select,
+textarea
+{
+	@extend 					%Control-Base;
+	@extend 					%Control-Editable;
+}
+
+input[type='submit'],
+input[type='button'],
+button,
+.Button
+{
+	@extend 					%Control-Base;
+	@extend						%Control-Button;
+}
+input[type='file']
+{
+	@extend 					%Control-Select;
+}
+input[type='checkbox'],
+input[type='radio']
+{
+	box-shadow: 				none;
+	height: 					auto;
+}
+select
+{
+	@extend 					%Control-Select;
+	&:focus
+	{
+		@include 				Round(top, $Control-Rounding);
+	}
+}
+textarea
+{
+	@extend 					%Control-Textarea;
+}
+label
+{
+	@extend 					%Unselectable;
+}
+label[for]
+{
+	@extend 					%Clickable;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Input-Group
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.Input-Group
+{
+	@extend 					%Clearfix;
+
+	@include 					Adaptive-Mobile
+	{
+		& > input
+		{
+			margin-left:		0!important;
+		}
+		& > input + input
+		{
+			margin-top:			$size-n;
+		}
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.Input-Group.Vertical
+{
+	input
+	{
+		width: 					100%;
+		border-radius: 			0;
+		border-bottom: 			0;
+	}
+	input:focus + input
+	{
+		border-top: 			$Control-BRDW $Control-BRDC-Focus solid;
+
+	}
+	input:first-child
+	{
+		@include 				Round(top, $Control-Rounding);
+	}
+	input:last-child
+	{
+		border-bottom: 			$Control-BRDW $Control-Editable-BRDC solid;
+		@include 				Round(bottom, $Control-Rounding);
+		&:focus
+		{
+			border-color: 		$Control-BRDC-Focus;
+		}
+	}
+	input + input
+	{
+		margin-top:				0;
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.Input-Group.Addon
+{
+	input
+	{
+		@include 				Round(left, $Control-Rounding);
+	}
+	span.Prefix + input
+	{
+		@include 				Round(right, $Control-Rounding);
+	}
+	.Prefix,
+	.Postfix
+	{
+		height: 				$Control-Height;
+		background-color: 		$Control-Addon-C;
+		text-align: 			center;
+		border:					$Control-BRDW $Control-Editable-BRDC solid;
+	}
+	.Prefix
+	{
+		border-right:			0;
+		@include 				Round(left, $Control-Rounding);
+	}
+	.Postfix
+	{
+		border-left:			0;
+		@include 				Round(right, $Control-Rounding);
+
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// FILE UPLOAD
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.Input-Group.Upload
+{
+	input[type='file']
+	{
+		display: block;
+		width: 100%;
+	}
+	ul
+	{
+		margin-top: $size-n;
+		li
+		{
+			position: relative;
+			overflow: hidden;
+			a.Link-Delete
+			{
+				position: absolute;
+				display: block;
+				padding: $Control-Padding;
+				right: 0;
+				bottom: - ($Control-Height + 4px);
+				width: 100%;
+				background-color: $Clr-Main;
+				color: white;
+			}
+			img
+			{
+				width: 100%;
+			}
+			&:hover a
+			{
+				bottom: 0;
+			}
+		}
+	}
+}
+label.File-Upload
+{
+	text-align: 				left;
+	input[type='file']
+	{
+		height: 				0;
+		padding: 				0;
+		border: 				0;
+		visibility: 		hidden;
+	}
+	& > span
+	{
+		@extend 				%Control-Base;
+		@extend  				%Control-Button;
+		@extend 				%Control-Button-Primary;
+		&:before
+		{
+			font-family: fontawesome;
+		}
+	}
+
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CHECKBOX: TOGGLE-SWITCH
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+label.Toggle-Switch
+{
+	
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

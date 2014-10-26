@@ -1,0 +1,15 @@
+// Base Class Definition
+// -------------------------
+
+.#{$fa-css-prefix}
+{
+	text-rendering: auto; // optimizelegibility throws things off #1094
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	&:before
+	{
+		display: inline-block;
+		font-size: inherit; // can't have font-size inherit on line above, so need to override
+		font: normal normal normal 14px/1 FontAwesome;
+	}
+}

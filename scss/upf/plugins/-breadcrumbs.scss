@@ -1,0 +1,119 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// BREADCRUMBS
+// List of routes to current page, displayed inline
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.Breadcrumbs
+{
+
+}
+
+.Breadcrumbs-List
+{
+	@extend 							%Unstyle;
+	@extend 							%Inline;
+}
+
+.Breadcrumbs-Item
+{
+	@extend 							.Icon, .Icon-angle-double-right;
+	position: 							relative;
+	margin-right:						$size-s;
+	padding-right:						$size;
+	font-size:							$Control-Font-Size;
+	&:before
+	{
+		border:							$Control-BRDW $Control-Editable-BRDC transparent;
+		position: 						absolute;
+		top:							1px;
+		right: 							0;
+		padding:						$Control-Padding-Vertical 0;
+	}
+	&:last-child:before
+	{
+		display: 						none;
+	}
+}
+.Breadcrumbs-Item.Dropdown
+{
+	min-width:							125px;
+}
+.Breadcrumbs-Item .Dropdown-Title
+{
+	border-color: 						lighten($Control-Editable-BRDC, 20%);
+	color:								$Control-Editable-BRDC;
+	&:hover
+	{
+		color:							$Text-Color-Primary;
+	}
+
+}
+.Breadcrumbs-Item > a,
+.Breadcrumbs-Item > span
+{
+	display: 							block;
+	padding: 							($Control-Padding-Vertical + 1px) 0;
+	border:								$Control-BRDW transparent solid;
+	line-height: 						$Control-Line-Height;
+}
+
+.Breadcrumbs-Item > a
+{
+	font-weight: 						300;
+	color:								$Control-Editable-BRDC;
+	&:hover
+	{
+		color:							$Text-Color-Primary;
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// BREADCRUMBS DIRECTIONAL
+// Looks like at Apple's website
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.Directional
+{
+	border:								$Control-BRDW $Control-Editable-BRDC solid;
+	border-radius: 						$Control-Rounding;
+	.Breadcrumbs-Item
+	{
+		position: 						relative;
+		padding:						0 20px 0 10px;
+		margin:							0;
+
+		&:after
+		{
+			position: 					absolute;
+			top:						0;
+			right:						$Control-BRDW;
+			content: 					'';
+			width: 						0;
+			height: 					0;
+			padding: 					0;
+			border-style: 				solid;
+			border-width: 				15px 0 15px 10px;
+			border-color: 				transparent transparent transparent white;
+		}
+
+		&:before
+		{
+			position: 					absolute;
+			top:						0;
+			right:						0;
+			content: 					'';
+			width: 						0;
+			height: 					0;
+			padding: 					0;
+			border-style: 				solid;
+			border-width: 				15px 0 15px 10px;
+			border-color: 				transparent transparent transparent $Control-Editable-BRDC;
+		}
+	}
+	.Breadcrumbs-Item:last-child
+	{
+		&:before,
+		&:after
+		{
+			display: none;
+		}
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,313 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// UPF Grid Module
+// 1. Functions
+// 2. Grid styles
+// 3. Node styles
+// 4. Grid Node generator
+// 5. Push
+// 6. Row-Open / Row-Close
+// 7. Visible / Hidden
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// FUNCTIONS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+@function Width-Set($Grid-Base, $Grid-Type, $Numarator, $Denominator: null)
+{
+	@if ($Grid-Base == Column)
+	{
+		@if ($Grid-Type == Merge)
+		{
+			$Width: (100% / $Grid-Columns-Count) * $Numarator;
+		}
+		@else if ($Grid-Type == Split)
+		{
+			$Width: ( ( (100% - (($Grid-Columns-Count - 1) * $Grid-Gutter) ) / $Grid-Columns-Count ) * $Numarator ) + ( ($Numarator - 1) * $Grid-Gutter);
+		}
+	}
+	@else if ($Grid-Base == Fraction)
+	{
+		@if ($Grid-Type == Merge)
+		{
+			$Width: 100%/$Denominator * $Numarator;
+		}
+		@else if ($Grid-Type == Split)
+		{
+			$Width: ((100% - ($Grid-Gutter * ($Denominator - 1))) / $Denominator) * $Numarator + ($Grid-Gutter * ($Numarator - 1));
+		}
+	}
+
+	@return $Width;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 1. GRID CONTAINER
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+[class*='#{$Grid-Name}']
+{
+	display: block;
+	@extend %Clearfix;
+}
+
+// Disabling bullets in grids based on lists ///////////////////////////////////////////////////////////////////////////
+ol[class*='#{$Grid-Name}'] > li,
+ul[class*='#{$Grid-Name}'] > li
+{
+	@extend %Unstyle;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 2. NODE ELEMENT
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+[class*='#{$Node-Name}-']
+{
+	width: 100%;
+	float: left;
+}
+
+@include Adaptive($Viewport-XS)
+{
+	.Split > [class*='#{$Node-Name}-'],
+	{
+		margin-left: $Grid-Gutter/2;
+		margin-right: $Grid-Gutter/2;
+		&:first-child
+		{
+			margin-left: 0;
+		}
+		&:last-child
+		{
+			margin-right: 0;
+		}
+	}
+}
+
+
+.#{$Grid-Name} .End
+{
+	float: right;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 3. GRID NODE GENERATOR
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// LOOP FROM MINIMAL VIEWPORT TO MAXIMAL
+@for $Viewport-Iterator from 1 to $Viewports-Count
+{
+	// GENERATING MEDIA QUERY
+	@include Adaptive(nth($Viewports-List, $Viewport-Iterator))
+	{
+		// CHECKING IF FRACTION GRID ENABLED. IF NOT - SKIP IT'S GENERATION
+		@if ($Grid-Fraction-Enable == true)
+		{
+			// GENERATING FRACTIONS ("FROM 2" BECAUSE WE DON'T NEED X/1 FRACTIONS)
+			@for $Fraction-Denominator from 2 to ($Grid-Fraction-Limit + 1)
+			{
+				@for $Fraction-Numerator from 1 to ($Fraction-Denominator + 1)
+				{
+					@if ($Grid-Merge-Enable == true)
+					{
+						@if ($Viewport-Iterator == 1)
+						{
+							.#{$Node-Name}-#{$Fraction-Numerator}-#{$Fraction-Denominator}
+							{
+								width: Width-Set(Fraction, Merge, $Fraction-Numerator, $Fraction-Denominator);
+							}
+						}
+						@else
+						{
+							.#{$Node-Name}-#{nth($Viewports-Prefix, $Viewport-Iterator)}-#{$Fraction-Numerator}-#{$Fraction-Denominator}
+							{
+								width: Width-Set(Fraction, Merge, $Fraction-Numerator, $Fraction-Denominator);
+							}
+						}
+					}
+					@if ($Grid-Split-Enable  == true)
+					{
+						@if ($Viewport-Iterator == 1)
+						{
+							.#{$Grid-Name}.Split > .#{$Node-Name}-#{$Fraction-Numerator}-#{$Fraction-Denominator}
+							{
+								width: Width-Set(Fraction, Split, $Fraction-Numerator, $Fraction-Denominator);
+								@if ($Fraction-Numerator == $Fraction-Denominator)
+								{
+									margin-left: 0;
+									margin-right: 0
+								}
+							}
+						}
+						@else
+						{
+							.#{$Grid-Name}.Split > .#{$Node-Name}-#{nth($Viewports-Prefix, $Viewport-Iterator)}-#{$Fraction-Numerator}-#{$Fraction-Denominator}
+							{
+								width: Width-Set(Fraction, Split, $Fraction-Numerator, $Fraction-Denominator);
+								@if ($Fraction-Numerator == $Fraction-Denominator)
+								{
+									margin-left: 0;
+									margin-right: 0
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		@if ($Grid-Columns-Enable == true)
+		{
+			@for $Fraction-Numerator from 1 to ($Grid-Columns-Count + 1)
+			{
+				@if ($Grid-Merge-Enable == true)
+				{
+					@if ($Viewport-Iterator == 1)
+					{
+						.#{$Node-Name}-#{$Fraction-Numerator}
+						{
+							width: Width-Set(Column, Merge, $Fraction-Numerator);
+						}
+					}
+					@else
+					{
+						.#{$Node-Name}-#{nth($Viewports-Prefix, $Viewport-Iterator)}-#{$Fraction-Numerator}
+						{
+							width: Width-Set(Column, Merge, $Fraction-Numerator);
+						}
+					}
+				}
+
+				@if ($Grid-Split-Enable == true)
+				{
+					@if ($Viewport-Iterator == 1)
+					{
+						.#{$Grid-Name}.Split > .#{$Node-Name}-#{$Fraction-Numerator}
+						{
+							width: Width-Set(Column, Split, $Fraction-Numerator);
+							@if ($Fraction-Numerator == $Grid-Columns-Count)
+							{
+								margin-left: 0;
+								margin-right: 0;
+							}
+						}
+					}
+					@else
+					{
+						.#{$Grid-Name}.Split > .#{$Node-Name}-#{nth($Viewports-Prefix, $Viewport-Iterator)}-#{$Fraction-Numerator}
+						{
+							width: Width-Set(Column, Split, $Fraction-Numerator);
+							@if ($Fraction-Numerator == $Grid-Columns-Count)
+							{
+								margin-left: 0;
+								margin-right: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 4. NODE PUSH
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+@for $Fraction-Numerator from 1 to 12
+{
+	.Push-#{$Fraction-Numerator}
+	{
+		margin-left: (100% / 12) * $Fraction-Numerator
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 5. ROW OPEN / CLOSE (JS based)
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.Row-Open
+{
+	margin-left: 0 !important;
+	clear: left !important;
+}
+
+.Row-Close
+{
+	margin-right: 0 !important;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 6. VISIBLE / HIDDEN
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+[class*='Hidden-']
+{
+	display: block;
+}
+
+.Hidden-XXS
+{
+	@include Adaptive-Mobile
+	{
+		display: none;
+	}
+}
+
+*[class*='Visible-']
+{
+	display: none;
+}
+
+.Visible-XXS
+{
+	@include Adaptive-Mobile
+	{
+		display: inline-block;
+	}
+}
+
+@for $Fraction-Numerator from 1 to $Viewports-Count
+{
+	@include Adaptive(nth($Viewports-List, $Fraction-Numerator))
+	{
+		.Hidden-#{nth($Viewports-Prefix , $Fraction-Numerator)}
+		{
+			display: none;
+		}
+		.Visible-#{nth($Viewports-Prefix , $Fraction-Numerator)}
+		{
+			display: inline-block;
+		}
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

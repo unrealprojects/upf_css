@@ -1,0 +1,94 @@
+$Toggle-Width:			22px;
+$Toggle-Height:			22px;
+$Toggle-Bar-Height:		2px;
+$Toggle-Bar-Spacing:	($Toggle-Height/2) - $Toggle-Bar-Height;
+$Toggle-Bar-Resize: 	2px;
+$Toggle-Color:			#000;
+.Navicon-Toggle.Spinning
+{
+	@extend %Centrate;
+	margin: 50px;
+	position: relative;
+	width: $Toggle-Width;
+	height: $Toggle-Height;
+	transition-duration: 0.5s;
+
+	.Icon
+	{
+		position: absolute;
+		top: $Toggle-Bar-Spacing + ($Toggle-Bar-Height/2);
+		width: $Toggle-Width;
+		height: $Toggle-Bar-Height;
+		background-color: $Toggle-Color;
+		transition-duration: 0.25s;
+
+		&:before, &:after
+		{
+			position: absolute;
+			width: $Toggle-Width;
+			height: $Toggle-Bar-Height;
+			background-color: $Toggle-Color;
+			content: "";
+			transition-duration: 0.25s;
+		}
+
+		&:before
+		{
+			top: -$Toggle-Bar-Spacing;
+			left: 0;
+		}
+
+		&:after
+		{
+			top: $Toggle-Bar-Spacing;
+			left: 0;
+		}
+	}
+
+	&:hover
+	{
+		cursor: pointer;
+
+		.Icon
+		{
+			&:before
+			{
+				top: -$Toggle-Bar-Spacing - $Toggle-Bar-Resize;
+			}
+
+			&:after
+			{
+				top: $Toggle-Bar-Spacing + $Toggle-Bar-Resize;
+			}
+		}
+	}
+
+	&.Expanded
+	{
+		transition-duration: 1s;
+		transform: rotate(180deg);
+		-webkit-transform: rotate(180deg);
+
+		.Icon
+		{
+			background-color: transparent;
+			&:before,
+			&:after
+			{
+				transition-duration: 0.5s;
+				top: 0;
+			}
+			&:before
+			{
+				transform: rotate(45deg);
+				-webkit-transform: rotate(45deg);
+			}
+
+			&:after
+			{
+				transform: rotate(-45deg);
+				-webkit-transform: rotate(-45deg);
+			}
+		}
+	}
+}

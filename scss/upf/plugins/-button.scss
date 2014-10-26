@@ -1,0 +1,36 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// BUTTON
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.Button
+{
+	border:								1px solid $C-Cyan-1;
+	background-color: 					$C-Cyan-2;
+	color:								#fff;
+	&:hover
+	{
+		border-color:					$C-Blue-1;
+		background-color: 				$C-Blue-2;
+	}
+
+	a&
+	{
+		display: 						inline-block;
+		color: 							#fff;
+	}
+
+}
+
+.Button.Secondary
+{
+	border-color:						$C-Blue-2;
+	color:								$C-Blue-2;
+	box-shadow: 						0 0 1px #fff inset;
+	text-shadow:						1px 1px 0 rgba(#fff, .5);
+	background-color: 					#fff;
+	&:hover
+	{
+		border-color:					$Control-Editable-BRDC;
+		color:							$Text-Color-Primary;
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
