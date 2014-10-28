@@ -1,0 +1,36 @@
+%Underline-None
+{
+	text-decoration: 		none;
+}
+%Underline-Dashed
+{
+	border-bottom:			1px dashed;
+}
+%Link-Color
+{
+	color:					$Link-Color;
+	&:hover
+	{
+		color:				$Link-Color-Hover;
+	}
+}
+%Text-Monospace
+{
+	font-family:			Consolas, 'Courier New', monospace;
+}
+%Transition-Color
+{
+	@include 				Transition(color, $Animation-Duration-Base);
+}
+
+%Link-Base-Prototype
+{
+	@extend 				%Link-Color;
+	@extend 				%Transition-Color;
+	@extend 				%Underline-None;
+}
+%Link-Script-Prototype
+{
+	@extend 				%Link-Base-Prototype;
+	@extend 				%Underline-Dashed;
+}

@@ -27,14 +27,7 @@ $Control-Addon-C:				#eee;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $Control-Animation-Duration:	.3s;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-$Checkbox-Margin:  0px;
-$Checkbox-Height: $Control-Height - $Checkbox-Margin;
-$Checkbox-Width: $Checkbox-Height * 2;
-$Checkbox-Border: $Control-Border-Width;
-$Checkbox-Fnt-Size: 14px;
-$Checkbox-Border-Radius: $Checkbox-Height;
-$Checkbox-Toggle-Spacing: 2px;
-$Checkbox-Toggle-Diameter: $Checkbox-Height - ($Checkbox-Toggle-Spacing * 2) - ($Checkbox-Border * 2);
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -71,9 +64,10 @@ $Checkbox-Toggle-Diameter: $Checkbox-Height - ($Checkbox-Toggle-Spacing * 2) - (
 %Control-Editable				// Shared styles for all non-button elements
 {
 	@extend 					%Control-Editable-Animation;
+	@extend 					%Control-Editable-Border;
 	padding:					$Control-Padding-Vertical $Control-Padding-Horizontal;
 
-	border:						$Control-BRDW $Control-Editable-BRDC solid;
+
 
 	background-color: 			transparent;//$Control-Editable-BGC;
 	&:focus
@@ -99,6 +93,11 @@ $Checkbox-Toggle-Diameter: $Checkbox-Height - ($Checkbox-Toggle-Spacing * 2) - (
 	{
 		height: 				$Control-Textarea-Height-Focus;
 	}
+}
+
+%Control-Editable-Border
+{
+	border:						$Control-BRDW $Control-Editable-BRDC solid;
 }
 
 %Control-Editable-Animation

@@ -123,7 +123,8 @@ Forms.Dropdown();Grid={};Grid.MultiRow=function()
 {var Node_Width=Math.floor($(Node).outerWidth(true));var Node_Margin=parseInt($(Node).css('margin-right'));if(Node_Key==0)
 {$(Node).addClass(Class_Open_Row).addClass(Class_First_Row);Row_Width+=Math.floor($(Node).outerWidth(true));}
 else
-{console.log(Row_Width);if(Row_Count==0){$(Node).addClass('Row-First');}
+{console.log(Row_Width);if(Row_Count==0)
+{$(Node).addClass('Row-First');}
 if((Row_Width+Node_Width-Node_Margin)<=Grid_Width)
 {Row_Width+=Node_Width;}
 else

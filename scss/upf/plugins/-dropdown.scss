@@ -22,6 +22,47 @@
 		padding-right:				$size-s;
 	}
 }
+%Dropdown-Prototype
+{
+	@extend 						%Unstyle;
+	@extend 						%Dropdown-Shadow;
+	display: 						none;
+	position: 						absolute;
+	overflow: 						hidden;
+	width:							100%;
+	z-index: 						10;
+
+	border:							$Control-BRDW $Control-Editable-BRDC solid;
+	border-top:						0;
+	background-color: 				white;
+	@include 						Round(bottom, $Control-Rounding);
+
+	li
+	{
+		a
+		{
+			display: 				block;
+			padding: 				$Control-Padding-Vertical $Control-Padding-Horizontal;
+
+			font-size:				$Control-Font-Size;
+			color:					$Text-Color-Primary;
+
+			&:hover
+			{
+				background-color: 	$Clr-Main;
+				color:				white;
+			}
+		}
+		a.Icon
+		{
+			@extend 					%Dropdown-Icon;
+		}
+	}
+	li.Divide
+	{
+		border-top:					$Control-BRDW $Control-Editable-BRDC solid;
+	}
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -66,44 +107,7 @@
 
 .Dropdown-Content
 {
-	@extend 						%Unstyle;
-	@extend 						%Dropdown-Shadow;
-	display: 						none;
-	position: 						absolute;
-	overflow: 						hidden;
-	width: 							100%;
-	z-index: 						10;
-
-	border:							$Control-BRDW $Control-Editable-BRDC solid;
-	border-top:						0;
-	background-color: 				white;
-	@include 						Round(bottom, $Control-Rounding);
-
-	li
-	{
-		a
-		{
-			display: 				block;
-			padding: 				$Control-Padding-Vertical $Control-Padding-Horizontal;
-
-			font-size:				$Control-Font-Size;
-			color:					$Text-Color-Primary;
-
-			&:hover
-			{
-				background-color: 	$Clr-Main;
-				color:				white;
-			}
-		}
-		a.Icon
-		{
-			@extend 					%Dropdown-Icon;
-		}
-	}
-	li.Divide
-	{
-		border-top:					$Control-BRDW $Control-Editable-BRDC solid;
-	}
+	@extend %Dropdown-Prototype;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -137,3 +141,67 @@
 	border:							0;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// INPUT SELECT
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.Input-Select
+{
+	position: 						relative;
+	&.Expanded
+	{
+		& > input
+		{
+			@include 				Round(top, $Control-Rounding);
+		}
+		.Input-Select-Content
+		{
+			display: 				block;
+		}
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.Input-Select > input
+{
+	width: 							100%;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.Input-Select-Content
+{
+	@extend 						%Dropdown-Prototype;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SPOILER
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+.Spoiler
+{
+}
+.Spoiler.Expanded
+{
+	.Spoiler-Content
+	{
+		display: block;
+	}
+}
+
+.Spoiler-Title
+{
+	@extend 						%Unselectable;
+	@extend 						%Control-Base;
+	@extend 						%Control-Editable;
+}
+.Spoiler-Content
+{
+	padding:						$Control-Padding-Horizontal;
+	display: none;
+}
