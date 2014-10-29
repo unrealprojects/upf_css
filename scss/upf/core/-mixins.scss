@@ -331,7 +331,7 @@
 @mixin Content-Spacing($Gap)
 {
 	$Content-Spacing: true;
-	body * + *
+	html * + *
 	{
 		@include 	Set-Rem(margin-top, $Gap)
 	}

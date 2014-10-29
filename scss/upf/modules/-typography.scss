@@ -88,12 +88,12 @@ blockquote
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 code
 {
+	@extend 				%Text-Monospace;
 	display: 				block;
 	padding: 				20px;
-	border-left:			5px dashed $Page-BGC;
+	border-left:			5px solid $C-Cyan-1;
 	background-color: 		$C-Grey-2;
 	color:					#fff;
-	@extend 				%Text-Monospace;
 	&.Inline
 	{
 		background-color: 	$C-Orange-6;
@@ -221,6 +221,10 @@ h6
 	h#{$Header-Level}.Subheader
 	{
 		@extend				%Text-Color-Secondary;
+	}
+	* + h#{$Header-Level}
+	{
+		@include 			Set-Rem(margin-top, 1.25);
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
