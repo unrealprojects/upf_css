@@ -118,7 +118,7 @@ settings.completed.call(input);},0);});if(chrome&&android){input.on("keyup.mask"
 checkVal();});}});})(jQuery);var Upf;var Forms={};Forms.Dropdown=function(){var Dropdown='.Dropdown',DropdownContent='.Dropdown-Content',DropdownTitle='.Dropdown-Title',DropdownToggle='.Dropdown-Toggle',Collapsed='Collapsed',Expanded='Expanded',Duration=500;$(Dropdown).addClass('Collapsed');var Toggle=false;$(document).on('click',DropdownTitle,function(){$(Dropdown+'.'+Expanded).not($(this).parent()).find(DropdownContent).slideUp(Duration);$(Dropdown+'.'+Expanded).not($(this).parent()).find(DropdownToggle).animate({transform:'rotate(0deg)'},Duration);$(Dropdown+'.'+Expanded).not($(this).parent()).removeClass(Expanded).addClass(Collapsed);$(this).parents(Dropdown).find(DropdownContent).slideToggle(Duration);$(this).parents(Dropdown).toggleClass(Collapsed+' '+Expanded);if(!Toggle){$(this).parents(Dropdown).find(DropdownToggle).animate({transform:'rotate(-180deg)'},Duration);Toggle=true;}else{$(this).parents(Dropdown).find(DropdownToggle).animate({transform:'rotate(0deg)'},Duration);Toggle=false;}
 return false;});$(document).on('click','body',function(){$(Dropdown+'.'+Expanded).find(DropdownContent).slideUp(Duration);$(Dropdown+'.'+Expanded).find(DropdownToggle).animate({transform:'rotate(0deg)'},Duration);$(Dropdown+'.'+Expanded).removeClass(Expanded).addClass(Collapsed);});}
 Forms.Dropdown();Grid={};Grid.MultiRow=function()
-{var Grid_Class='.Grid.Multi-Row',Node_Class='Node',Class_Open_Row='Row-Open',Class_Close_Row='Row-Close',Class_First_Row='Row-First';$(Grid_Class).each(function(GridKey,Grid)
+{var Grid_Class='.Grid.Multi-Row',Node_Class='Col',Class_Open_Row='Row-Open',Class_Close_Row='Row-Close',Class_First_Row='Row-First';$(Grid_Class).each(function(GridKey,Grid)
 {var Grid_Width=$(Grid).width();var Row_Width=0;var Row_Count=1;$(Grid).find('>[class*='+Node_Class+']').each(function(Node_Key,Node)
 {var Node_Width=Math.floor($(Node).outerWidth(true));var Node_Margin=parseInt($(Node).css('margin-right'));if(Node_Key==0)
 {$(Node).addClass(Class_Open_Row).addClass('Row-'+Row_Count);Row_Width+=Math.floor($(Node).outerWidth(true));}
@@ -131,7 +131,7 @@ else
 $(Node).addClass('Row-'+Row_Count);});});Grid.MultiRow.Reset=function()
 {$(Grid_Class+' [class*='+Node_Class+']').removeClass(Class_Open_Row+' '+Class_Close_Row+' '+Class_First_Row);}}
 Grid.Vertical=function()
-{var Grid_Class='.Grid.Vertical',Node_Class='Node';$(Grid_Class).each(function(GridKey,Grid)
+{var Grid_Class='.Grid.Vertical',Node_Class='Col  ';$(Grid_Class).each(function(GridKey,Grid)
 {var Nodes_Difference=[];var Nodes_Full_Height=[];var Grid_Height=0;for(var RowCounter=1;;RowCounter++){if($('.Row-'+RowCounter,Grid).length>0)
 {var Nodes_Height=$('.Row-'+RowCounter,Grid).map(function(){return $(this).height();});var Nodes_Outer_Height=$('.Row-'+RowCounter,Grid).map(function(){return $(this).outerHeight(true);});$.each(Nodes_Outer_Height,function(ItemKey,Item){if(Nodes_Full_Height[ItemKey]!==undefined){Nodes_Full_Height[ItemKey]+=Item;}else{Nodes_Full_Height[ItemKey]=Item;}});var Nodes_Max_Height=Math.max.apply(null,Nodes_Height);Grid_Height+=Nodes_Max_Height;$.each(Nodes_Height,function(ItemKey,Item){if(Nodes_Difference[ItemKey]!==undefined){Nodes_Difference[ItemKey]=Nodes_Difference[ItemKey]+Nodes_Max_Height-Item;}else{Nodes_Difference[ItemKey]=Nodes_Max_Height-Item;}});$('.Row-'+(RowCounter+1),Grid).each(function(Node_Key,Node){$(Node).css('top','-'+Nodes_Difference[Node_Key]+'px');});}
 else

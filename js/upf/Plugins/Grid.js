@@ -7,7 +7,7 @@ Grid.MultiRow = function()
 {
     // Default Variables
     var Grid_Class            =   '.Grid.Multi-Row',         // Used Grid Class Names
-        Node_Class            =   'Node',                    // Node Class Name
+        Node_Class            =   'Col',                    // Node Class Name
         Class_Open_Row        =   'Row-Open',                // Default Row-Open Class Name
         Class_Close_Row       =   'Row-Close',               // Default Row-Close Class Name
         Class_First_Row       =   'Row-First';               // Default Row-First Class Name
@@ -86,7 +86,7 @@ Grid.MultiRow = function()
 Grid.Vertical = function()
 {
     var Grid_Class    =   '.Grid.Vertical',         // Used Grid Class Names
-        Node_Class    =   'Node';
+        Node_Class    =   'Col  ';
 
     // Each Grid
     $(Grid_Class).each(function(GridKey,Grid)

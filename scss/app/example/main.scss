@@ -52,7 +52,7 @@
 // Vertical Grid
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-.Grid [class*=Node-] img
+.Grid [class*=Col-] img
 {
     display: block;
     width: 100%;
@@ -62,13 +62,13 @@
     display: inline-block;
 }
 
-.Vertical.Grid [class*=Node-]
+.Vertical.Grid [class*=Col-]
 {
     position: relative;
 
 }
 
-.Grid.Split [class*=Node-]
+.Grid.Split [class*=Col-]
 {
     margin-bottom: 20px;
 }
