@@ -67,6 +67,11 @@ body.Nodes-Zebra
 	@extend 				%Centrate;
 	padding:				$Node-Padding;
 }
+.Node-Ghost
+{
+	@extend 				%Node-Width;
+	@extend 				%Centrate;
+}
 .Node + .Node
 {
 	margin-top:				40px;

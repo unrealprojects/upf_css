@@ -88,6 +88,11 @@ blockquote
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 code
 {
+	display: 				block;
+	padding: 				20px;
+	border-left:			5px dashed $Page-BGC;
+	background-color: 		$C-Grey-2;
+	color:					#fff;
 	@extend 				%Text-Monospace;
 	&.Inline
 	{
