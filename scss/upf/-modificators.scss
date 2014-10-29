@@ -66,6 +66,25 @@
 	& > *
 	{
 		float: left;
+		@if ($Global-Content-Spacing == true)
+		{
+			margin-top: 0;
+		}
+	}
+}
+%Inline-XS
+{
+	@extend %Clearfix;
+	& > *
+	{
+		@include Adaptive($Viewport-XS)
+		{
+			float: left;
+		}
+		@if ($Global-Content-Spacing == true)
+		{
+			margin-top: 0;
+		}
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

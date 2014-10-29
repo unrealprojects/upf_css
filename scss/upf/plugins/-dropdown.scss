@@ -156,7 +156,7 @@
 	{
 		& > input
 		{
-			@include 				Round(top, $Control-Rounding);
+			@extend 				%Control-Focus-Only-Round-Top;
 		}
 		.Input-Select-Content
 		{

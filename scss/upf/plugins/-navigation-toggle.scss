@@ -7,7 +7,6 @@ $Toggle-Color:			#000;
 .Navicon-Toggle.Spinning
 {
 	@extend %Centrate;
-	margin: 50px;
 	position: relative;
 	width: $Toggle-Width;
 	height: $Toggle-Height;
@@ -44,7 +43,15 @@ $Toggle-Color:			#000;
 			left: 0;
 		}
 	}
-
+	&.White .Icon
+	{
+		background-color: #fff;
+		&:before,
+		&:after
+		{
+			background-color: #fff;
+		}
+	}
 	&:hover
 	{
 		cursor: pointer;

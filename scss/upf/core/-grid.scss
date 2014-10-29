@@ -75,6 +75,10 @@ ul[class*='#{$Grid-Name}'] > li
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 [class*='#{$Node-Name}-']
 {
+	@if ($Global-Content-Spacing == true)
+	{
+		margin-top: 0;
+	}
 	width: 100%;
 	float: left;
 }
@@ -275,7 +279,7 @@ ul[class*='#{$Grid-Name}'] > li
 	display: block;
 }
 
-.Hidden-XXS
+.Hidden-Mobile
 {
 	@include Adaptive-Mobile
 	{
@@ -288,7 +292,7 @@ ul[class*='#{$Grid-Name}'] > li
 	display: none;
 }
 
-.Visible-XXS
+.Visible-Mobile
 {
 	@include Adaptive-Mobile
 	{
@@ -306,7 +310,7 @@ ul[class*='#{$Grid-Name}'] > li
 		}
 		.Visible-#{nth($Viewports-Prefix , $Fraction-Numerator)}
 		{
-			display: inline-block;
+			display: block;
 		}
 	}
 }

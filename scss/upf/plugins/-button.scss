@@ -3,13 +3,12 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 .Button
 {
-	border:								1px solid $C-Cyan-1;
-	background-color: 					$C-Cyan-2;
+	border:								1px solid $C-Blue-1;
+	background-color: 					$C-Blue-2;
 	color:								#fff;
 	&:hover
 	{
-		border-color:					$C-Blue-1;
-		background-color: 				$C-Blue-2;
+		background-color: 				$C-Blue-1;
 	}
 
 	a&

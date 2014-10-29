@@ -63,6 +63,7 @@ $Control-Animation-Duration:	.3s;
 
 %Control-Editable				// Shared styles for all non-button elements
 {
+	@extend 					%Control-Inner-Shadow;
 	@extend 					%Control-Editable-Animation;
 	@extend 					%Control-Editable-Border;
 	padding:					$Control-Padding-Vertical $Control-Padding-Horizontal;
@@ -94,7 +95,10 @@ $Control-Animation-Duration:	.3s;
 		height: 				$Control-Textarea-Height-Focus;
 	}
 }
-
+%Control-Inner-Shadow
+{
+	box-shadow:					inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
 %Control-Editable-Border
 {
 	border:						$Control-BRDW $Control-Editable-BRDC solid;
@@ -140,6 +144,13 @@ $Control-Animation-Duration:	.3s;
 		background-color: 		$C-Blue-1;
 	}
 }
+%Control-Focus-Only-Round-Top
+{
+	&:focus
+	{
+		@include 				Round(top, $Control-Rounding);
+	}
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -170,7 +181,13 @@ $Control-Animation-Duration:	.3s;
 .Control-Group
 {
 	@extend 					%Clearfix;
-	padding: 					15px 0;
+
+	@if($Global-Content-Spacing != true)
+	{
+		padding: 				15px 0;
+	}
+
+	padding: 					0;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -211,10 +228,7 @@ input[type='radio']
 select
 {
 	@extend 					%Control-Select;
-	&:focus
-	{
-		@include 				Round(top, $Control-Rounding);
-	}
+	@extend 					%Control-Focus-Only-Round-Top;
 }
 textarea
 {

@@ -1,8 +1,36 @@
 @import "-variables";
 @import "../../../scss/upf/upf";
 
-body{
-    background: $C-Cyan-6;
+@include Content-Spacing(1);
+@include Sticky-Footer('.Page-Wrapper', '.Page-Wrapper-Stop', '.Page-Footer', 50px);
+
+.Page-Header
+{
+	background-color: 	#333;
+	.Navicon-Toggle
+	{
+		margin: 10px 40px;
+	}
+}
+.Page-Navigation
+{
+	@extend 			%Node-Width;
+	@extend 			%Centrate;
+	@extend 			%Inline-XS;
+	margin-top: 		0;
+}
+
+.Page-Navigation-Item
+{
+	a
+	{
+		display: block;
+		padding: 10px 40px;
+		@include 		Adaptive($Viewport-XS)
+		{
+			padding: 10px;
+		}
+	}
 }
 
 .Test

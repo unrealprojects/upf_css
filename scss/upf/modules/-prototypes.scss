@@ -34,3 +34,17 @@
 	@extend 				%Link-Base-Prototype;
 	@extend 				%Underline-Dashed;
 }
+
+%Text-Color-Secondary
+{
+	color:					$Text-Color-Secondary;
+}
+%Text-Weight-Normal
+{
+	font-weight: 			normal;
+}
+%Content-Block
+{
+	border:					1px solid #ececec;
+	background-color:		#fff;
+}
