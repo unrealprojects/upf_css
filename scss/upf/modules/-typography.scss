@@ -207,7 +207,7 @@ h6
 }
 .Underlined
 {
-	padding-bottom:			10px;
+	padding-bottom:			5px;
 	border-bottom:			1px solid $C-Grey-5;
 }
 
@@ -224,7 +224,7 @@ h6
 	}
 	* + h#{$Header-Level}
 	{
-		@include 			Set-Rem(margin-top, 1.25);
+		@include 			Set-Rem(margin-top, 1.5);
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

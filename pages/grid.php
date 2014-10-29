@@ -1,7 +1,7 @@
 <section class="Node-Out">
     <div class="Node-Ghost">
         <h3 class="Underlined">Fraction</h3>
-<pre><code>&lt;div class="Grid Demo"&gt;
+<pre><code>&lt;div class="Grid"&gt;
     &lt;div class="Col-1-2"&gt;1/2&lt;/div&gt;
     &lt;div class="Col-1-2"&gt;1/2&lt;/div&gt;
 &lt;/div&gt;
@@ -58,6 +58,10 @@
 
 
         <h3 class="Underlined">Split Fraction</h3>
+<pre><code>&lt;div class="Grid Split"&gt;
+&lt;div class="Col-1-2"&gt;1/2&lt;/div&gt;
+&lt;div class="Col-1-2"&gt;1/2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
         <div class="Grid Split Demo">
             <div class="Col-1-2">1/2</div>
             <div class="Col-1-2">1/2</div>
@@ -108,7 +112,12 @@
             <div class="Col-1-8">1/8</div>
         </div>
 
+
         <h3 class="Underlined">Multicolumn</h3>
+<pre><code>&lt;div class="Grid Split"&gt;
+&lt;div class="Col-1-2"&gt;1/2&lt;/div&gt;
+&lt;div class="Col-1-2"&gt;1/2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
         <div class="Grid Demo">
             <div class="Col-1">1</div>
             <div class="Col-1">1</div>
