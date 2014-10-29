@@ -1,4 +1,3 @@
-Grid = {};
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Multi Rows
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -86,7 +85,7 @@ Grid.MultiRow = function()
 Grid.Vertical = function()
 {
     var Grid_Class    =   '.Grid.Vertical',         // Used Grid Class Names
-        Node_Class    =   'Col  ';
+        Node_Class    =   'Col';
 
     // Each Grid
     $(Grid_Class).each(function(GridKey,Grid)
@@ -160,11 +159,13 @@ Grid.Vertical = function()
 
 $(document).ready(function(){
     Grid.MultiRow();
-    Grid.Vertical();
+
     $(window).resize(function(){
         Grid.MultiRow.Reset();
         Grid.MultiRow();
     });
+
+    Grid.Vertical();
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
