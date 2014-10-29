@@ -1,3 +1,5 @@
+Grid = {};
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Multi Rows
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -107,7 +109,7 @@ Grid.Vertical = function()
                     return $(this).outerHeight(true);
                 });
 
-                // Difference
+                // Add
                 $.each(Nodes_Outer_Height,function(ItemKey,Item){
                     if(Nodes_Full_Height[ItemKey]!==undefined){
                         Nodes_Full_Height[ItemKey] += Item;
@@ -116,9 +118,11 @@ Grid.Vertical = function()
                     }
                 });
 
+
                 var Nodes_Max_Height = Math.max.apply(null, Nodes_Height);
 
                 Grid_Height += Nodes_Max_Height;
+
 
                 // Difference
                 $.each(Nodes_Height,function(ItemKey,Item){
