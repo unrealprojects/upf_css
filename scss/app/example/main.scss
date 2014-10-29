@@ -1,9 +1,6 @@
 @import "-variables";
 @import "../../../scss/upf/upf";
 
-@include Content-Spacing(1);
-@include Sticky-Footer('.Page-Wrapper', '.Page-Wrapper-Stop', '.Page-Footer', 50px);
-
 .Page-Header
 {
 	background-color: 	#333;
@@ -67,11 +64,6 @@
 {
     position: relative;
 
-}
-
-.Grid.Split [class*=Col-]
-{
-    margin-bottom: 20px;
 }
 
 
