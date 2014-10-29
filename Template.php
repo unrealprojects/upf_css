@@ -16,7 +16,6 @@
             <script src="/js/libs/ie8/jquery.placeholder.js" type="text/javascript"></script>
         <![endif]-->
 
-
     </head>
     <body>
     <div class="Page-Wrapper">
@@ -41,6 +40,7 @@
         </ul>
     </nav>
 
+
         <aside>
             <?php
 
@@ -59,69 +59,4 @@
     <footer class="Page-Footer" role="contentinfo">
         &copy; 2014 Unreal Projects Framework
     </footer>
-
-
-        <!--
-        <section class="Grid Split Multi-Row Test">
-            <h1>Grid Split Multi-Row</h1>
-            <div class="Node-XS-3">Placeholder Images for every case.</div>
-            <div class="Node-XS-3">Placeholder Images for every case.</div>
-            <div class="Node-XS-3">Placeholder Images for every case.</div>
-            <div class="Node-XS-3">Placeholder Images for every case.</div>
-
-            <div class="Node-XS-2">Placeholder Images for every case.</div>
-            <div class="Node-XS-4">Placeholder Images for every case.</div>
-            <div class="Node-XS-4">Placeholder Images for every case.</div>
-            <div class="Node-XS-2">Placeholder Images for every case.</div>
-
-            <div class="Node-XS-6">Placeholder Images for every case.</div>
-            <div class="Node-XS-3">Placeholder Images for every case.</div>
-            <div class="Node-XS-3">Placeholder Images for every case.</div>
-        </section>
-
-        <section class="Grid Multi-Row Test">
-            <h1>Grid Merge Multi-Row</h1>
-            <div class="Node-XS-3">Placeholder Images for every case.</div>
-            <div class="Node-XS-3">Placeholder Images for every case.</div>
-            <div class="Node-XS-3">Placeholder Images for every case.</div>
-            <div class="Node-XS-3">Placeholder Images for every case.</div>
-
-            <div class="Node-XS-2">Placeholder Images for every case.</div>
-            <div class="Node-XS-4">Placeholder Images for every case.</div>
-            <div class="Node-XS-4">Placeholder Images for every case.</div>
-            <div class="Node-XS-2">Placeholder Images for every case.</div>
-
-            <div class="Node-XS-6">Placeholder Images for every case.</div>
-            <div class="Node-XS-3">Placeholder Images for every case.</div>
-            <div class="Node-XS-3">Placeholder Images for every case.</div>
-        </section>
-
-        <section class="Grid Split Multi-Row Test">
-            <h1>Fraction Grid Split Multi-Row</h1>
-            <div class="Node-1-3">Placeholder Images for every case.</div>
-            <div class="Node-1-3">Placeholder Images for every case.</div>
-            <div class="Node-1-3">Placeholder Images for every case.</div>
-
-            <div class="Node-2-5">Placeholder Images for every case.</div>
-            <div class="Node-3-5">Placeholder Images for every case.</div>
-
-            <div class="Node-2-7">Placeholder Images for every case.</div>
-            <div class="Node-3-7">Placeholder Images for every case.</div>
-            <div class="Node-2-7">Placeholder Images for every case.</div>
-        </section>
-
-        <section class="Grid Multi-Row Test">
-            <h1>Fraction Grid Merge Multi-Row</h1>
-            <div class="Node-1-3">Placeholder Images for every case.</div>
-            <div class="Node-1-3">Placeholder Images for every case.</div>
-            <div class="Node-1-3">Placeholder Images for every case.</div>
-
-            <div class="Node-2-5">Placeholder Images for every case.</div>
-            <div class="Node-3-5">Placeholder Images for every case.</div>
-
-            <div class="Node-2-7">Placeholder Images for every case.</div>
-            <div class="Node-3-7">Placeholder Images for every case.</div>
-            <div class="Node-2-7">Placeholder Images for every case.</div>
-        </section>
-        -->
 </html>
