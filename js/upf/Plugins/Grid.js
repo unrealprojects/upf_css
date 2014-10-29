@@ -111,7 +111,7 @@ Grid.Vertical = function()
 
                 // Add
                 $.each(Nodes_Outer_Height,function(ItemKey,Item){
-                    if(Nodes_Full_Height[ItemKey]!==undefined){
+                    if(Nodes_Full_Height[ItemKey]!=undefined){
                         Nodes_Full_Height[ItemKey] += Item;
                     }else{
                         Nodes_Full_Height[ItemKey] = Item;
@@ -126,7 +126,7 @@ Grid.Vertical = function()
 
                 // Difference
                 $.each(Nodes_Height,function(ItemKey,Item){
-                    if(Nodes_Difference[ItemKey]!==undefined){
+                    if(Nodes_Difference[ItemKey]!=undefined){
                         Nodes_Difference[ItemKey] = Nodes_Difference[ItemKey] + Nodes_Max_Height - Item;
                     }else{
                         Nodes_Difference[ItemKey] = Nodes_Max_Height - Item;
