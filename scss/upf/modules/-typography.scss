@@ -11,6 +11,10 @@ html
 }
 body
 {
+	@if ($Global-Content-Spacing == true)
+	{
+		margin-top:			0;
+	}
 	min-height: 			320px;
 	background-color: 		$Page-BGC;
 	font-family: 			$Text-Font-Base;
@@ -96,9 +100,12 @@ code
 	color:					#fff;
 	&.Inline
 	{
-		background-color: 	$C-Orange-6;
-		border:				1px solid $C-Orange-5;
-		padding:			3px;
+		@extend 			%Text-Color-Primary;
+		display: 			inline;
+		padding:			2px;
+		border:				none;
+		background-color:	$C-Grey-5;
+		white-space: 		nowrap;
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -238,6 +245,13 @@ h6
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 p
 {
+	@if ($Global-Content-Spacing != true)
+	{
+		p + p
+		{
+			@include 		Set-Rem(margin-top, 1);
+		}
+	}
 	&.Leading
 	{
 		font-weight:		bold;
@@ -249,3 +263,12 @@ p
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.Uppercase
+{
+	@extend 				%Text-Uppercase;
+}
+.Unstyle
+{
+	@extend 				%Unstyle;
+}

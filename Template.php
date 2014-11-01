@@ -32,10 +32,11 @@
             <span class="Icon"></span>
         </div>
         <ul class="Page-Navigation Visible-XS">
-            <li class="Page-Navigation-Item"><a href="#">About</a></li>
-            <li class="Page-Navigation-Item"><a href="#">Grid</a></li>
-            <li class="Page-Navigation-Item"><a href="#">Forms</a></li>
-            <li class="Page-Navigation-Item"><a href="#">Typography</a></li>
+            <li class="Page-Navigation-Item"><a href="/">Home</a></li>
+            <li class="Page-Navigation-Item"><a href="/variables">Variables</a></li>
+            <li class="Page-Navigation-Item"><a href="/grid">Grid</a></li>
+            <li class="Page-Navigation-Item"><a href="/forms">Forms</a></li>
+            <li class="Page-Navigation-Item"><a href="/typography">Typography</a></li>
             <li class="Page-Navigation-Item"><a href="#">Test Room</a></li>
         </ul>
     </nav>

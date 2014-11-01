@@ -2,7 +2,7 @@
 // VARIABLES
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $Control-Height:				30px;										// Shared height for all controls
-$Control-Rounding:				4px;										// Border-Radius
+$Control-Rounding:				3px;										// Border-Radius
 $Control-BRDC-Focus: 			#5ec0f0;
 $Control-Shadow-Focus:			rgba($Control-BRDC-Focus, .6);
 $Control-BRDW:					1px;										// Border-Width
@@ -151,6 +151,10 @@ $Control-Animation-Duration:	.3s;
 		@include 				Round(top, $Control-Rounding);
 	}
 }
+%Control-Label
+{
+	padding:					$Control-Padding-Vertical 0;
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -189,6 +193,12 @@ $Control-Animation-Duration:	.3s;
 
 	padding: 					0;
 }
+.Bordered .Control-Group + .Control-Group
+{
+	margin-top:					10px;
+	padding-top:				10px;
+	border-top:					1px solid $C-Grey-5;
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -224,6 +234,7 @@ input[type='radio']
 {
 	box-shadow: 				none;
 	height: 					auto;
+	margin:						0;
 }
 select
 {
@@ -236,12 +247,22 @@ textarea
 }
 label
 {
+	padding:					3px 0;
 	@extend 					%Unselectable;
 }
 label[for]
 {
 	@extend 					%Clickable;
 }
+
+@if ($Global-Content-Spacing == true)
+{
+	* + button
+	{
+		margin-top: 0;
+	}
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -265,6 +286,20 @@ label[for]
 		{
 			margin-top:			$size-n;
 		}
+	}
+	input
+	{
+		width: 					100%;
+	}
+	input[type='checkbox'],
+	input[type='radio']
+	{
+		width:					auto;
+	}
+	.Info
+	{
+		@extend 				%Text-Color-Secondary;
+		@include 				Set-Rem(font-size, 0.75);
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

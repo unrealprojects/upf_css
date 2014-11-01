@@ -95,30 +95,33 @@
 //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 @mixin Round($Round-Mode: all, $Radius: $border-radius) {
-	@if ($Round-Mode == 'all') {
-		border-radius: $Radius;
-	} @else if ($Round-Mode == 'diagonal') {
-		border-radius: $Radius 0;
-	} @else if ($Round-Mode == 'diagonal-reverse') {
-		border-radius: 0 $Radius;
-	} @else if ($Round-Mode == 'left') {
-		border-radius: $Radius 0 0 $Radius;
-	} @else if ($Round-Mode == 'right') {
-		border-radius: 0 $Radius $Radius 0;
-	} @else if ($Round-Mode == 'top') {
-		border-radius: $Radius $Radius 0 0;
-	} @else if ($Round-Mode == 'bottom') {
-		border-radius: 0 0 $Radius $Radius;
-	} @else if ($Round-Mode == 'bottom-left') {
-		border-bottom-left-radius: $Radius;
-	} @else if ($Round-Mode == 'bottom-right') {
-		border-bottom-right-radius: $Radius;
-	} @else if ($Round-Mode == 'top-left') {
-		border-top-left-radius: $Radius;
-	} @else if ($Round-Mode == 'top-right') {
-		border-top-right-radius: $Radius;
-	} @else if ($Round-Mode == 'search') {
-		border-radius: $size-l;
+	@if ($Global-Border-Radius == true)
+	{
+		@if ($Round-Mode == 'all') {
+			border-radius: $Radius;
+		} @else if ($Round-Mode == 'diagonal') {
+			border-radius: $Radius 0;
+		} @else if ($Round-Mode == 'diagonal-reverse') {
+			border-radius: 0 $Radius;
+		} @else if ($Round-Mode == 'left') {
+			border-radius: $Radius 0 0 $Radius;
+		} @else if ($Round-Mode == 'right') {
+			border-radius: 0 $Radius $Radius 0;
+		} @else if ($Round-Mode == 'top') {
+			border-radius: $Radius $Radius 0 0;
+		} @else if ($Round-Mode == 'bottom') {
+			border-radius: 0 0 $Radius $Radius;
+		} @else if ($Round-Mode == 'bottom-left') {
+			border-bottom-left-radius: $Radius;
+		} @else if ($Round-Mode == 'bottom-right') {
+			border-bottom-right-radius: $Radius;
+		} @else if ($Round-Mode == 'top-left') {
+			border-top-left-radius: $Radius;
+		} @else if ($Round-Mode == 'top-right') {
+			border-top-right-radius: $Radius;
+		} @else if ($Round-Mode == 'search') {
+			border-radius: $size-l;
+		}
 	}
 }
 

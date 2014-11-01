@@ -23,12 +23,12 @@
     <form>
         <h4 class="Underlined">Form testing</h4>
         <div class="Control-Group">
-            <label class="Node-XS-1-4" for="demo-1-1">Consectetur adipisicing</label>
-            <input class="Node-XS-3-4" id="demo-1-1" type="text"/>
+            <label class="Col-XS-1-4" for="demo-1-1">Consectetur adipisicing</label>
+            <input class="Col-XS-3-4" id="demo-1-1" type="text"/>
         </div>
         <div class="Control-Group">
-            <label class="Node-XS-1-4" for="demo-1-2">Molestiae quae</label>
-            <input class="Node-XS-3-4" id="demo-1-2" type="text"/>
+            <label class="Col-XS-1-4" for="demo-1-2">Molestiae quae</label>
+            <input class="Col-XS-3-4" id="demo-1-2" type="text"/>
         </div>
         <div class="Control-Group">
             <button class="Button">I'm a button</button>
