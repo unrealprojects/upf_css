@@ -1,5 +1,12 @@
 <section class="Node Bordered">
-    <h3>User Registration</h3>
+
+
+    <h3 class="Underlined">User Registration</h3>
+
+    <div class="Panel Info">
+        <p>Classes used: Bordered</p>
+    </div>
+
     <div class="Control-Group">
         <label class="Col-XS-3" for="demo-1-1">
             E&ndash;mail
@@ -29,6 +36,50 @@
         <div class="Input-Group Col-XS-9">
             <input id="demo-1-4" type="checkbox"/>
             <button class="Button End">Sign Up</button>
+        </div>
+    </div>
+</section>
+<section class="Node Labels-Bold Labels-Right">
+
+    <h3 class="Underlined">Create publication</h3>
+
+    <div class="Panel Info">
+        <p>Classes used: Labels-Bold, Labels-Right</p>
+    </div>
+
+    <div class="Control-Section">
+        <div class="Control-Group">
+            <label class="Col-XS-2" for="demo-2-1">Post title:</label>
+            <input class="Col-XS-10" id="demo-2-1" type="text"/>
+        </div>
+        <div class="Control-Group">
+            <label class="Col-XS-2" for="demo-2-2">Post Category:</label>
+            <div class="Dropdown Col-XS-10">
+                <div class="Dropdown-Title" id="demo-2-2">Choose category <span class="Dropdown-Toggle Icon Icon-chevron-down"></span></div>
+                <ul class="Dropdown-Content">
+                    <li><a href="#">Publications</a></li>
+                    <li><a href="#">Drafts</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="Control-Section">
+        <div class="Control-Group">
+            <label class="Col-XS-2" for="demo-2-3">Post content:</label>
+            <textarea class="Col-XS-10" id="demo-2-3"></textarea>
+        </div>
+    </div>
+
+</section>
+
+<section class="Node">
+    <h3 class="Underlined">Personal Info</h3>
+    <div class="Control-Group">
+        <label for="demo-3-1">Month Salary</label>
+        <div class="Input-Group Addon">
+            <span class="Prefix Col-2">$</span>
+            <input class="Col-10" id="demo-3-1" type="text"/>
         </div>
     </div>
 </section>

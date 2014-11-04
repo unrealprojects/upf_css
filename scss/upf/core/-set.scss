@@ -1,3 +1,6 @@
-@include Content-Spacing(1);
+@if ($Global-Content-Spacing == true)
+{
+	@include Content-Spacing(1);
+}
 
 @include Sticky-Footer('.Page-Wrapper', '.Page-Wrapper-Stop', '.Page-Footer', 50px);

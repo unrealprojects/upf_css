@@ -4,11 +4,11 @@
 .Button
 {
 	border:								1px solid $C-Blue-1;
-	background-color: 					$C-Blue-2;
+	@include 							Gradient($C-Blue-2, $C-Blue-1);
 	color:								#fff;
 	&:hover
 	{
-		background-color: 				$C-Blue-1;
+		@include 						Gradient($C-Cyan-1, $C-Blue-1);
 	}
 
 	a&

@@ -13,7 +13,7 @@ body
 {
 	@if ($Global-Content-Spacing == true)
 	{
-		margin-top:			0;
+		@extend 				%Margin-Top-None;
 	}
 	min-height: 			320px;
 	background-color: 		$Page-BGC;

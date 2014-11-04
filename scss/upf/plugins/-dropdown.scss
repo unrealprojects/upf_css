@@ -18,16 +18,21 @@
 {
 	&:before
 	{
-		width:						$size;
-		padding-right:				$size-s;
+		width:						$Size-Default;
+		padding-right:				$Size-Small;
 	}
 }
 %Dropdown-Prototype
 {
+	@if ($Global-Content-Spacing == true)
+	{
+		@extend 				%Margin-Top-None;
+	}
 	@extend 						%Unstyle;
 	@extend 						%Dropdown-Shadow;
 	display: 						none;
 	position: 						absolute;
+	top:							$Control-Height;
 	overflow: 						hidden;
 	width:							100%;
 	z-index: 						10;
@@ -39,6 +44,10 @@
 
 	li
 	{
+		@if ($Global-Content-Spacing == true)
+		{
+			@extend 				%Margin-Top-None;
+		}
 		a
 		{
 			display: 				block;
@@ -49,7 +58,7 @@
 
 			&:hover
 			{
-				background-color: 	$Clr-Main;
+				background-color: 	$Color-Primary;
 				color:				white;
 			}
 		}
@@ -90,7 +99,7 @@
 	@extend 						%Control-Base;
 	@extend 						%Control-Editable;
 	position: 						relative;
-	padding-right:					$size;
+	padding-right:					$Size-Small;
 
 	&.Icon
 	{
@@ -101,7 +110,7 @@
 .Dropdown-Toggle
 {
 	position: 						absolute;
-	right: 							$size-s;
+	right: 							$Size-Small;
 	top:							$Control-Padding-Vertical;
 }
 

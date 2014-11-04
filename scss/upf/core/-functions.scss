@@ -2,3 +2,20 @@
 {
 	@return $num / ($num * 0 + 1);
 }
+
+@function Input_Get_Padding()
+{
+	@return				($Control-Height - $Control-Line-Height - ($Control-BRDW * 2) / 2);
+}
+
+@function Textarea_Get_Height($State: normal)
+{
+	@if $State == normal
+	{
+		@return				(($Control-Font-Size * $Control-Textarea-Line-Height) * $Control-Textarea-Rows) + ($Control-Padding-Vertical * 2) + ($Control-BRDW * 2);
+	}
+	@else if $State == focus
+	{
+		@return				(($Control-Font-Size * $Control-Textarea-Line-Height) * $Control-Textarea-Rows-Focus) + ($Control-Padding-Vertical * 2) + ($Control-BRDW * 2);
+	}
+}

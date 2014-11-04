@@ -2,7 +2,7 @@
 // VARIABLES
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $Control-Height:				30px;										// Shared height for all controls
-$Control-Rounding:				3px;										// Border-Radius
+$Control-Rounding:				4px;										// Border-Radius
 $Control-BRDC-Focus: 			#5ec0f0;
 $Control-Shadow-Focus:			rgba($Control-BRDC-Focus, .6);
 $Control-BRDW:					1px;										// Border-Width
@@ -20,17 +20,15 @@ $Control-Button-BRDC:			#bbb;
 $Control-Textarea-Rows:			2;
 $Control-Textarea-Rows-Focus:	3;
 $Control-Textarea-Line-Height:	1.45;
-$Control-Textarea-Height:		(($Control-Font-Size * $Control-Textarea-Line-Height) * $Control-Textarea-Rows) + ($Control-Padding-Vertical * 2) + ($Control-BRDW * 2);
-$Control-Textarea-Height-Focus:	(($Control-Font-Size * $Control-Textarea-Line-Height) * $Control-Textarea-Rows-Focus) + ($Control-Padding-Vertical * 2) + ($Control-BRDW * 2);
+$Control-Textarea-Height:		Textarea_Get_Height(normal);
+$Control-Textarea-Height-Focus:	Textarea_Get_Height(focus);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-$Control-Addon-C:				#eee;
+$Control-Addon-Color:			#eee;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $Control-Animation-Duration:	.3s;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
 
 
@@ -169,7 +167,7 @@ $Control-Animation-Duration:	.3s;
 {
 	& + .Control-Section
 	{
-		margin-top: 			30px;
+		@include 				Set-Rem(margin-top, 2.5);
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -254,6 +252,21 @@ label[for]
 {
 	@extend 					%Clickable;
 }
+
+.Labels-Bold label
+{
+	font-weight: 				bold;
+}
+@include						Adaptive($Viewport-XS)
+{
+	.Labels-Right label
+	{
+		text-align: 				right;
+		padding-right: 				1em;
+	}
+}
+
+
 
 @if ($Global-Content-Spacing == true)
 {

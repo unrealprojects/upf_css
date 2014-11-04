@@ -77,7 +77,7 @@ ul[class*='#{$Grid-Name}'] > li
 {
 	@if ($Global-Content-Spacing == true)
 	{
-		margin-top: 0;
+		@extend 				%Margin-Top-None;
 	}
 	width: 100%;
 	float: left;
@@ -155,9 +155,9 @@ ul[class*='#{$Grid-Name}'] > li
 								@if ($Fraction-Numerator == $Fraction-Denominator)
 								{
 									margin-left: 0;
-									margin-right: 0
-								}
-							}
+							margin-right: 0
+						}
+					}
 						}
 						@else
 						{

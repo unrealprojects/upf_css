@@ -17,9 +17,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 .Panel
 {
-	padding: $size-n;
-	border-radius: $Control-Border-Radius;
-	border: $Control-Border-Width $Control-Border-Color solid;
+	padding: $Size-Micro;
+	border-radius: $Control-Rounding;
+	border: $Control-BRDW $Control-Editable-BRDC solid;
 	background-color: $C-Grey-6;
 	color: $C-Grey-1;
 	&.Invert
@@ -32,7 +32,7 @@
 		}
 		&.Simple
 		{
-			border: $Control-Border-Width $C-Grey-2 solid;
+			border: $Control-BRDW $C-Grey-2 solid;
 		}
 	}
 	&.Invert
@@ -59,7 +59,7 @@
 			}
 			&.Simple
 			{
-				border: $Control-Border-Width $C-Green-2 solid;
+				border: $Control-BRDW $C-Green-2 solid;
 			}
 		}
 	}
@@ -79,7 +79,7 @@
 			}
 			&.Simple
 			{
-				border: $Control-Border-Width $C-Orange-2 solid;
+				border: $Control-BRDW $C-Orange-2 solid;
 			}
 		}
 	}
@@ -99,7 +99,7 @@
 			}
 			&.Simple
 			{
-				border: $Control-Border-Width $C-Red-2 solid;
+				border: $Control-BRDW $C-Red-2 solid;
 			}
 		}
 	}
@@ -119,7 +119,7 @@
 			}
 			&.Simple
 			{
-				border: $Control-Border-Width $C-Blue-2 solid;
+				border: $Control-BRDW $C-Blue-2 solid;
 			}
 		}
 	}
@@ -139,7 +139,7 @@
 			}
 			&.Simple
 			{
-				border: $Control-Border-Width $C-Cyan-2 solid;
+				border: $Control-BRDW $C-Cyan-2 solid;
 			}
 		}
 	}
