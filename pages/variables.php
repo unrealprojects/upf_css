@@ -1,5 +1,5 @@
 <section class="Node">
-    <h3 class="Underlined">Global Variables</h3>
+    <h3 class="Underlined">Global</h3>
     <dl class="Horizontal">
         <dt>
             <code class="Inline">$Core-Grid-Enable</code>
@@ -20,6 +20,24 @@
         </dt>
         <dd>
             Automatically splits all elements vertically, by using margin-top. Using "Lobotomized Owl" mixin. Default value is <code class="Inline">true</code>.
+        </dd>
+    </dl>
+</section>
+<section class="Node">
+    <h3 class="Underlined">Typography</h3>
+    <dl class="Horizontal">
+        <dt>
+            <code class="Inline">$Text-Size-Base</code>
+        </dt>
+        <dd>
+            Defines base <code class="Inline">font-size</code>. All elements on the page will inherit from this variable.
+        </dd>
+
+        <dt>
+            <code class="Inline">$Text-Size-Mobile</code>
+        </dt>
+        <dd>
+            Defines base <code class="Inline">font-size</code> for mobile devices. All elements on the page will inherit from this variable, if viewport size is less than 768px.
         </dd>
     </dl>
 </section>

@@ -100,12 +100,11 @@ code
 	color:					#fff;
 	&.Inline
 	{
-		@extend 			%Text-Color-Primary;
 		display: 			inline;
-		padding:			2px;
+		padding:			2px 5px;
 		border:				none;
-		background-color:	$C-Grey-5;
 		white-space: 		nowrap;
+		@include 			Round(all, $Global-Border-Radius);
 	}
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

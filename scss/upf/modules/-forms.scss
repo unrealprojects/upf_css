@@ -2,7 +2,7 @@
 // VARIABLES
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 $Control-Height:				30px;										// Shared height for all controls
-$Control-Rounding:				4px;										// Border-Radius
+$Control-Rounding:				$Global-Border-Radius;						// Border-Radius
 $Control-BRDC-Focus: 			#5ec0f0;
 $Control-Shadow-Focus:			rgba($Control-BRDC-Focus, .6);
 $Control-BRDW:					1px;										// Border-Width

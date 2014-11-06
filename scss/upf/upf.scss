@@ -11,7 +11,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Google Fonts import
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-@if ($Font-Open-Sans-Enable)   {@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600,700);}
+@if ($Font-Open-Sans-Enable)   {@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,300,600,700);}
 @if ($Font-PT-Serif-Enable)    {@import url(http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic&subset=latin,cyrillic);}
 @if ($Font-Roboto-Slab-Enable) {@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,700,300);}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -68,9 +68,9 @@
 @import "plugins/-button";
 @import "plugins/-comments";
 @import "plugins/-dropdown";
-@import "plugins/-input-select";
 @import "plugins/-panel";
 @import "plugins/-tabs";
+@import "plugins/-navbar";
 @import "plugins/-navigation-toggle";
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -1,0 +1,192 @@
+$Navbar-Color-Accent:		#424242;
+$Navbar-Color-Body:			#e1e1e1;
+$Navbar-Color-UI:			#d0d0d0;
+$Navbar-Color-Main:			#e74c3c;
+
+.Page-Header
+{
+	@extend %Clearfix;
+	display: table;
+	position: relative;
+	width: 100%;
+	height: 50px;
+	background-color: $Navbar-Color-Accent;
+
+	.Hamburger
+	{
+		@extend .Hidden-XS;
+		@extend .Icon, .Icon-reorder;
+		left: 10px;
+		padding: 15px 20px;
+
+		&:before
+		{
+			font-size: 19px;
+		}
+	}
+	.Search
+	{
+		@extend .Icon, .Icon-search;
+		right: 10px;
+		padding: 13px 20px;
+		&:before
+		{
+			font-size: 19px;
+		}
+	}
+
+	.Hamburger,
+	.Search
+	{
+		@extend %Clickable;
+		@extend %Margin-Top-None;
+		position: absolute;
+		top: 0px;
+		height: 50px;
+		color: #fff;
+
+		&:hover,
+		&.Active
+		{
+			background-color: $Navbar-Color-Body;
+			color: $Navbar-Color-Accent;
+		}
+	}
+
+}
+
+a.Page-Logotype
+{
+	@extend %Margin-Top-None;
+
+	display: table-cell;
+	width: 100%;
+	text-align: center;
+	line-height: 50px;
+	font-weight: 700;
+	font-style: italic;
+	font-size: 24px;
+	color: #fff;
+
+	.Darken
+	{
+		color: #c2c2c2;
+	}
+
+	&:hover
+	{
+
+	}
+
+	@include Adaptive($Viewport-XS)
+	{
+		float: left;
+		width: auto;
+		margin: 0 30px;
+		text-align: left;
+	}
+}
+
+.Page-Navigation
+{
+	@extend %Margin-Top-None;
+
+	@include Adaptive-Mobile
+	{
+		display: none;
+		position: absolute;
+		top: 50px;
+		left: 0;
+		right: 0;
+		width: 100%;
+		background-color: $Navbar-Color-Body;
+		border-bottom: 1px solid $Navbar-Color-UI;
+	}
+	@include Adaptive($Viewport-XS)
+	{
+		display: block;
+		float: left;
+	}
+
+	&.Expanded
+	{
+		display: block;
+	}
+}
+
+.Page-Navigation-List
+{
+	@include Adaptive-Mobile
+	{
+		margin: 20px 0;
+	}
+}
+
+.Page-Navigation-Item
+{
+	@extend %Margin-Top-None;
+
+	@include Adaptive($Viewport-XS)
+	{
+		float: left;
+	}
+}
+
+a.Page-Navigation-Link
+{
+	font-weight: 600;
+
+	@include Adaptive-Mobile
+	{
+		display: block;
+		padding: 5px 30px;
+		color: $Navbar-Color-Accent;
+
+		&:hover
+		{
+			background-color: $Navbar-Color-Main;
+			color: #fff;
+		}
+	}
+	@include Adaptive($Viewport-XS)
+	{
+		display: table-cell;
+		padding: 0 20px;
+		line-height: 50px;
+		color: #fff;
+
+		&:hover
+		{
+			background-color: $Navbar-Color-Body;
+			color: $Navbar-Color-Accent;
+		}
+	}
+
+	&.Active
+	{
+		background-color: $Navbar-Color-Main;
+		color: #fff;
+	}
+}
+
+.Search-Content
+{
+	@extend %Margin-Top-None;
+	display: none;
+	position: absolute;
+	top: 50px;
+	right: 0;
+	padding: 30px;
+	background-color: $Navbar-Color-Body;
+	border-bottom: 1px solid $Navbar-Color-UI;
+
+	@include Adaptive-Mobile
+	{
+		width: 100%;
+	}
+
+	&.Expanded
+	{
+		display: block;
+	}
+}

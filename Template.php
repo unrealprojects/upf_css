@@ -6,6 +6,19 @@
         <meta http-equiv="X-UA-Compatible" content="IE=8" />
         <link rel="stylesheet" type="text/css" href="/css/main.css.gz"/>
         <script src="/js/app/example/main.js.gz" type="text/javascript"></script>
+        <script>
+            $(document).ready(function() {
+                $('.Hamburger').click(function () {
+                    $(this).toggleClass('Active');
+                    $('.Page-Navigation').toggleClass('Expanded');
+                });
+
+                $('.Search').click(function () {
+                    $(this).toggleClass('Active');
+                    $('.Search-Content').toggleClass('Expanded');
+                });
+            });
+        </script>
 
         <!--[if lt IE 9]>
             <link rel="stylesheet" type="text/css" href="/css/main.css"/>
@@ -20,17 +33,36 @@
     <body>
     <div class="Page-Wrapper">
     <div class="Page-Header">
-        <div class="Navicon-Toggle Spinning White Visible-Mobile Hidden-XS">
-            <span class="Icon"></span>
+        <span class="Hamburger" href="#"></span>
+        <a class="Page-Logotype" href="/"><span class="Darken">Uni</span>formity</a>
+        <a class="Search" href="#"></a>
+        <nav class="Page-Navigation">
+            <ul class="Page-Navigation-List">
+                <li class="Page-Navigation-Item">
+                    <a class="Page-Navigation-Link" href="/variables">Variables</a>
+                </li>
+                <li class="Page-Navigation-Item">
+                    <a class="Page-Navigation-Link Active" href="/grid">Grid</a>
+                </li>
+                <li class="Page-Navigation-Item">
+                    <a class="Page-Navigation-Link" href="/forms">Forms</a>
+                </li>
+                <li class="Page-Navigation-Item">
+                    <a class="Page-Navigation-Link" href="/typography">Typography</a>
+                </li>
+                <li class="Page-Navigation-Item">
+                    <a class="Page-Navigation-Link" href="/testroom1">Test Room One</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="Search-Content">
+            <div class="Control-Group">
+                <div class="Input-Group">
+                    <input type="text"/>
+                    <button>Search</button>
+                </div>
+            </div>
         </div>
-        <ul class="Page-Navigation Visible-XS">
-            <li class="Page-Navigation-Item"><a href="/">Home</a></li>
-            <li class="Page-Navigation-Item"><a href="/variables">Variables</a></li>
-            <li class="Page-Navigation-Item"><a href="/grid">Grid</a></li>
-            <li class="Page-Navigation-Item"><a href="/forms">Forms</a></li>
-            <li class="Page-Navigation-Item"><a href="/typography">Typography</a></li>
-            <li class="Page-Navigation-Item"><a href="/testroom1">Test Room 1</a></li>
-        </ul>
     </div>
 
 

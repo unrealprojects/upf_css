@@ -1,37 +1,6 @@
 @import "-variables";
 @import "../../../scss/upf/upf";
 
-.Page-Header
-{
-	background-color: 	#333;
-	.Navicon-Toggle
-	{
-		margin: 10px 40px;
-	}
-}
-.Page-Navigation
-{
-	@extend 			%Unstyle;
-	@extend 			%Node-Width;
-	@extend 			%Centrate;
-	@extend 			%Inline-XS;
-	margin-top: 		0;
-}
-
-.Page-Navigation-Item
-{
-	a
-	{
-		display: block;
-		padding: 10px 40px;
-		@include 		Adaptive($Viewport-XS)
-		{
-			padding: 10px;
-		}
-	}
-}
-
-
 .Test
 {
     max-width: 1600px;

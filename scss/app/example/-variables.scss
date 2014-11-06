@@ -13,7 +13,9 @@ $Core-Reset-Enable:				true;			// Global Reset, Nullifies all margins, paddings,
 $Core-Grid-Enable:				true;			// Grid allows you to easily place content in multiple columns
 
 $Global-Content-Spacing:		true;
-$Global-Border-Radius:			true;			// Toggles 'Round' mixin
+
+$Global-Rounding:				true;			// Toggles 'Round' mixin
+$Global-Border-Radius:			4px;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
