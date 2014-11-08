@@ -73,28 +73,60 @@
 
 </section>
 
-<section class="Node">
+<section class="Node Grid">
     <h3 class="Underlined">Input-Select</h3>
     <div class="Panel Info">
         <p>Class used: Input-Select</p>
     </div>
     <div class="Control-Section">
+
         <div class="Control-Group">
-            <label class="Col-XS-2" for="Demo-3-1">Choose item</label>
+            <label class="Col-XS-2" for="Demo-3-1">Activities</label>
             <div class="Input-Select Col-XS-10" id="Demo-3-1">
                 <input type="text" name="input-select-value" placeholder="Type"/>
                 <span class="Input-Select-Clean Icon Icon-close"></span>
                 <span class="Input-Select-Toggle Icon Icon-chevron-down"></span>
 
                 <ul class="Input-Select-Content">
-                    <li data-index="1"><a href="">Caught</a></li>
-                    <li data-index="2"><a href="">In</a></li>
-                    <li data-index="3"><a href="">A</a></li>
-                    <li data-index="4"><a href="">Web</a></li>
-                    <li data-index="5"><a href="">Removed</a></li>
-                    <li data-index="5"><a href="">From</a></li>
-                    <li data-index="5"><a href="">The</a></li>
-                    <li data-index="5"><a href="">World</a></li>
+                    <li data-index="1"><a href="">Academia</a></li>
+                    <li data-index="2"><a href="">Cultural</a></li>
+                    <li data-index="3"><a href="">Medical</a></li>
+                    <li data-index="4"><a href="">Industry</a></li>
+                    <li data-index="5"><a href="">Public services</a></li>
+                    <li data-index="6"><a href="">Transport</a></li>
+                    <li data-index="7"><a href="">Science</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="Control-Group">
+            <label class="Col-XS-2" for="Demo-3-2">Favorite sport</label>
+            <div class="Input-Select Col-XS-10" data-multi-select="checkbox" id="Demo-3-2">
+                <input type="text" name="input-select-value" placeholder="Type"/>
+                <span class="Input-Select-Clean Icon Icon-close"></span>
+                <span class="Input-Select-Toggle Icon Icon-chevron-down"></span>
+
+                <ul class="Input-Select-Content">
+                    <li data-index="1"><input type="checkbox" name="name1"/><a href="">Archery</a></li>
+                    <li data-index="2"><input type="checkbox"/><a href="">Basketball</a></li>
+                    <li data-index="3"><input type="checkbox"/><a href="">Climbing</a></li>
+                    <li data-index="4"><input type="checkbox"/><a href="">Cycling</a></li>
+                    <li data-index="5"><input type="checkbox"/><a href="">Bicycle</a></li>
+                    <li data-index="6"><input type="checkbox"/><a href="">Grappling</a></li>
+                    <li data-index="8"><input type="checkbox"/><a href="">Striking</a></li>
+                    <li data-index="9"><input type="checkbox"/><a href="">Weapons</a></li>
+                    <li data-index="10"><input type="checkbox"/><a href="">Cue sports</a></li>
+                    <li data-index="11"><input type="checkbox"/><a href="">Dance</a></li>
+                    <li data-index="12"><input type="checkbox"/><a href="">Equine sports</a></li>
+                    <li data-index="13"><input type="checkbox"/><a href="">Fishing</a></li>
+                    <li data-index="14"><input type="checkbox"/><a href="">Football</a></li>
+                    <li data-index="15"><input type="checkbox"/><a href="">Golf</a></li>
+                    <li data-index="16"><input type="checkbox"/><a href="">Gymnastics</a></li>
+                    <li data-index="17"><input type="checkbox"/><a href="">Hunting</a></li>
+                    <li data-index="18"><input type="checkbox"/><a href="">Ice sports</a></li>
+                    <li data-index="19"><input type="checkbox"/><a href="">Kite sports</a></li>
+                    <li data-index="20"><input type="checkbox"/><a href="">Motorized sports</a></li>
                 </ul>
             </div>
         </div>
