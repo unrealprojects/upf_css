@@ -103,7 +103,7 @@
 
 	&.Icon
 	{
-		@extend 					%Dropdown-Icon;
+        @extend 					%Dropdown-Icon;
 	}
 }
 
@@ -161,6 +161,24 @@
 .Input-Select
 {
 	position: 						relative;
+
+    .Input-Select-Clean
+    {
+        position: absolute;
+        right: 30px;
+        top: 0px;
+        margin-top: 0.4rem;
+        line-height: 14px;
+    }
+
+    .Input-Select-Toggle{
+        position: absolute;
+        right: 10px;
+        top: 0px;
+        line-height: 14px;
+        margin-top: 0.4rem;
+    }
+
 	&.Expanded
 	{
 		& > input
@@ -172,6 +190,7 @@
 			display: 				block;
 		}
 	}
+
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 .Input-Select > input

@@ -1,6 +1,5 @@
 (function($){
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Dropdown Settings
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -29,6 +28,8 @@
     var InputSelect__Element =              '.Input-Select',
         InputSelect__Content =              '.Input-Select-Content',
         InputSelect__Item =                 'li',
+        InputSelect__Clean =                '.Input-Select-Clean',
+        InputSelect__Toggle =               '.Input-Select-Toggle',
         InputSelect__Input_Value =          'input[type=text]',
         InputSelect__Input_Index =          'input[type=hidden]',
 
@@ -46,6 +47,11 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Script Settings
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -53,6 +59,10 @@
     var Script__Element = '.Script';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 
 
 
@@ -110,6 +120,12 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     var InputSelect = function () {
+        // Todo::Show-Hide InputSelect__Clean
+        // Todo:: data-ajax
+        // Todo:: data-multiselect
+        // Todo:: data-multiselect
+
+
 
         // Show List
         $(document).on('click', InputSelect__Element, function () {
@@ -118,6 +134,7 @@
                 $(this).parent()
                     .addClass(InputSelect__Expanded)
                     .removeClass(InputSelect__Collapsed);
+                $(InputSelect__Toggle, $(this).parent()).animate({transform: 'rotate(180deg)'}, InputSelect__Duration);
             });
 
             return false;
@@ -129,6 +146,7 @@
                 $(this).parent()
                     .addClass(InputSelect__Collapsed)
                     .removeClass(InputSelect__Expanded);
+                $(InputSelect__Toggle,$(this).parent()).animate({transform: 'rotate(0deg)'}, InputSelect__Duration);
             });
         });
 
@@ -140,9 +158,10 @@
         });
 
         // Type
+        // Todo::Search By different words
         $(document).on('keyup', InputSelect__Element + ' ' + InputSelect__Input_Value, function () {
-            var Filter = $(this).val().toLowerCase();
 
+            var Filter = $(this).val().toLowerCase();
             if(Filter.length) {
                 $(InputSelect__Content + ' ' + InputSelect__Item, $(this).parent()).each(function (ItemKey, Item) {
                     if ($(Item).text().toLowerCase().indexOf(Filter) >= 0) {
@@ -156,12 +175,24 @@
                     }
                 });
             }else{
-                $(InputSelect__Content + ' ' + InputSelect__Item).removeClass(InputSelect__Item_Hidden)
+                // Todo::Make a Function
+                $(InputSelect__Content + ' ' + InputSelect__Item, $(this).parent()).removeClass(InputSelect__Item_Hidden)
                     .addClass(InputSelect__Item_Visible)
                     .slideDown();
             }
-
         });
+
+        // Clean
+        $(document).on('click',InputSelect__Element + ' ' + InputSelect__Clean,function(){
+            $(InputSelect__Input_Index, $(this).parent()).val(' ');
+            $(InputSelect__Input_Value, $(this).parent()).val(' ');
+
+            // Todo::Make a Function
+            $(InputSelect__Content + ' ' + InputSelect__Item, $(this).parent()).removeClass(InputSelect__Item_Hidden)
+                .addClass(InputSelect__Item_Visible)
+                .slideDown();
+        });
+
     };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -185,7 +216,23 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Execute
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     Dropdown();
     InputSelect();
     Script();
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 })(jQuery);

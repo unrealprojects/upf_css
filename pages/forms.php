@@ -83,7 +83,9 @@
             <label class="Col-XS-2" for="Demo-3-1">Choose item</label>
             <div class="Input-Select Col-XS-10" id="Demo-3-1">
                 <input type="text" name="input-select-value" placeholder="Type"/>
-                <input type="hidden" name="input-select-index"/>
+                <span class="Input-Select-Clean Icon Icon-close"></span>
+                <span class="Input-Select-Toggle Icon Icon-chevron-down"></span>
+
                 <ul class="Input-Select-Content">
                     <li data-index="1"><a href="">Caught</a></li>
                     <li data-index="2"><a href="">In</a></li>
