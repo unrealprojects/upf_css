@@ -1,4 +1,4 @@
-<section class="Node Bordered Grid">
+<section class="Node Bordered">
 
 
     <h3 class="Underlined">User Registration</h3>
@@ -73,6 +73,33 @@
 
 </section>
 
+<section class="Node">
+    <h3 class="Underlined">Input-Select</h3>
+    <div class="Panel Info">
+        <p>Class used: Input-Select</p>
+    </div>
+    <div class="Control-Section">
+        <div class="Control-Group">
+            <label class="Col-XS-2" for="Demo-3-1">Choose item</label>
+            <div class="Input-Select Col-XS-10" id="Demo-3-1">
+                <input type="text" name="input-select-value" placeholder="Type"/>
+                <input type="hidden" name="input-select-index"/>
+                <ul class="Input-Select-Content">
+                    <li data-index="1"><a href="">Caught</a></li>
+                    <li data-index="2"><a href="">In</a></li>
+                    <li data-index="3"><a href="">A</a></li>
+                    <li data-index="4"><a href="">Web</a></li>
+                    <li data-index="5"><a href="">Removed</a></li>
+                    <li data-index="5"><a href="">From</a></li>
+                    <li data-index="5"><a href="">The</a></li>
+                    <li data-index="5"><a href="">World</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="Node">
 <section class="Node Grid">
     <h3 class="Underlined">Personal Info</h3>
     <div class="Control-Group">
@@ -116,6 +143,11 @@
         <div class="Col-9 Input-Group Addon">
             <span class="Prefix Col-2 Col-SM-1">$</span>
             <input class="Col-10 Col-SM-11" id="demo-3-2" type="text"/>
+
+        <label for="demo-3-1">Month Salary</label>
+        <div class="Input-Group Addon">
+            <span class="Prefix Col-2">$</span>
+            <input class="Col-10" id="demo-3-1" type="text"/>
         </div>
     </div>
 </section>

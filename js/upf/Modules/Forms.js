@@ -1,48 +1,191 @@
-var Forms = {};
+(function($){
 
-/*********************************************************************************************************************** Dropdown ***/
-Forms.Dropdown = function(){
-    // Default Variables
-    var Dropdown            =   '.Dropdown',
-        DropdownContent     =   '.Dropdown-Content',
-        DropdownTitle       =   '.Dropdown-Title',
-        DropdownToggle      =   '.Dropdown-Toggle',
-        Collapsed           =   'Collapsed',
-        Expanded            =   'Expanded',
-        Duration            =   500;
 
-    // Presets
-    $(Dropdown).addClass('Collapsed');
-    var Toggle = false;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Dropdown Settings
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Body
-    $(document).on('click',DropdownTitle,function(){
-        $(Dropdown+'.'+Expanded).not($(this).parent()).find(DropdownContent).slideUp(Duration);
-        $(Dropdown+'.'+Expanded).not($(this).parent()).find(DropdownToggle).animate({transform: 'rotate(0deg)'},Duration);
-        $(Dropdown+'.'+Expanded).not($(this).parent()).removeClass(Expanded).addClass(Collapsed);
+    var Dropdown__Element =     '.Dropdown',
+        Dropdown__Content =     '.Dropdown-Content',
+        Dropdown__Title =       '.Dropdown-Title',
+        Dropdown__Toggle =      '.Dropdown-Toggle',
 
-        $(this).parents(Dropdown).find(DropdownContent).slideToggle(Duration);
-        $(this).parents(Dropdown).toggleClass(Collapsed+' '+Expanded);
+        Dropdown__Collapsed =   'Collapsed',
+        Dropdown__Expanded =    'Expanded',
 
-        // Toggle Button
-        if(!Toggle){
-            $(this).parents(Dropdown).find(DropdownToggle).animate({transform: 'rotate(-180deg)'},Duration);
-            Toggle = true;
-        }else{
-            $(this).parents(Dropdown).find(DropdownToggle).animate({transform: 'rotate(0deg)'},Duration);
-            Toggle = false;
-        }
+        Dropdown__Duration =     160;
 
-        return false;
-    });
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Focus Out
-    $(document).on('click','body',function(){
-        $(Dropdown+'.'+Expanded).find(DropdownContent).slideUp(Duration);
-        $(Dropdown+'.'+Expanded).find(DropdownToggle).animate({transform: 'rotate(0deg)'},Duration);
-        $(Dropdown+'.'+Expanded).removeClass(Expanded).addClass(Collapsed);
-    });
-}
 
-/*********************************************************************************************************************** Execute Functions ***/
-Forms.Dropdown();
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Input - Select Settings
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    var InputSelect__Element =              '.Input-Select',
+        InputSelect__Content =              '.Input-Select-Content',
+        InputSelect__Item =                 'li',
+        InputSelect__Input_Value =          'input[type=text]',
+        InputSelect__Input_Index =          'input[type=hidden]',
+
+        InputSelect__Collapsed =            'Collapsed',
+        InputSelect__Expanded =             'Expanded',
+
+        InputSelect__Item_Hidden =          'Hidden',
+        InputSelect__Item_Visible =         'Visible',
+
+
+        InputSelect__Data_Index =           'data-index',
+        InputSelect__Data_Selected_Index =  'data-selected-index',
+
+        InputSelect__Duration =             120;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Script Settings
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    var Script__Element = '.Script';
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Dropdown
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    var Dropdown = function () {
+
+        // Presets
+        $(Dropdown__Element).addClass(Dropdown__Collapsed);
+        var Toggle = false;
+
+        // Body
+        $(document).on('click', Dropdown__Title, function () {
+            $(Dropdown__Element + '.' + Dropdown__Expanded).not($(this).parent()).find(Dropdown__Content).slideUp(Dropdown__Duration);
+            $(Dropdown__Element + '.' + Dropdown__Expanded).not($(this).parent()).find(Dropdown__Toggle).animate({transform: 'rotate(0deg)'}, Dropdown__Duration);
+            $(Dropdown__Element + '.' + Dropdown__Expanded).not($(this).parent()).removeClass(Dropdown__Expanded).addClass(Dropdown__Collapsed);
+
+            $(this).parents(Dropdown__Element).find(Dropdown__Content).slideToggle(Dropdown__Duration);
+            $(this).parents(Dropdown__Element).toggleClass(Dropdown__Collapsed + ' ' + Dropdown__Expanded);
+
+            // Toggle Button
+            if (!Toggle) {
+                $(this).parents(Dropdown__Element).find(Dropdown__Toggle).animate({transform: 'rotate(-180deg)'}, Dropdown__Duration);
+                Toggle = true;
+            } else {
+                $(this).parents(Dropdown__Element).find(Dropdown__Toggle).animate({transform: 'rotate(0deg)'}, Dropdown__Duration);
+                Toggle = false;
+            }
+
+            return false;
+        });
+
+        // Focus Out
+        $(document).on('click', 'body', function () {
+            $(Dropdown__Element + '.' + Dropdown__Expanded).find(Dropdown__Content).slideUp(Dropdown__Duration);
+            $(Dropdown__Element + '.' + Dropdown__Expanded).find(Dropdown__Toggle).animate({transform: 'rotate(0deg)'}, Dropdown__Duration);
+            $(Dropdown__Element + '.' + Dropdown__Expanded).removeClass(Dropdown__Expanded).addClass(Dropdown__Collapsed);
+        });
+    };
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Input Select
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    var InputSelect = function () {
+
+        // Show List
+        $(document).on('click', InputSelect__Element, function () {
+
+            $(InputSelect__Content, this).slideDown(InputSelect__Duration, function () {
+                $(this).parent()
+                    .addClass(InputSelect__Expanded)
+                    .removeClass(InputSelect__Collapsed);
+            });
+
+            return false;
+        });
+
+        // Hide List
+        $(document).on('click', 'body', function () {
+            $(InputSelect__Content).slideUp(InputSelect__Duration, function () {
+                $(this).parent()
+                    .addClass(InputSelect__Collapsed)
+                    .removeClass(InputSelect__Expanded);
+            });
+        });
+
+        // Add Selected Value
+        $(document).on('click', InputSelect__Content + ' ' + InputSelect__Item, function () {
+            $(this).parents(InputSelect__Element).attr(InputSelect__Data_Selected_Index, $(this).attr(InputSelect__Data_Index) );
+            $(InputSelect__Input_Index, $(this).parents(InputSelect__Element)).val($(this).attr(InputSelect__Data_Index));
+            $(InputSelect__Input_Value, $(this).parents(InputSelect__Element)).val( $(this).text());
+        });
+
+        // Type
+        $(document).on('keyup', InputSelect__Element + ' ' + InputSelect__Input_Value, function () {
+            var Filter = $(this).val().toLowerCase();
+
+            if(Filter.length) {
+                $(InputSelect__Content + ' ' + InputSelect__Item, $(this).parent()).each(function (ItemKey, Item) {
+                    if ($(Item).text().toLowerCase().indexOf(Filter) >= 0) {
+                        $(Item).removeClass(InputSelect__Item_Hidden)
+                            .addClass(InputSelect__Item_Visible)
+                            .slideDown();
+                    } else {
+                        $(Item).addClass(InputSelect__Item_Hidden)
+                            .removeClass(InputSelect__Item_Visible)
+                            .slideUp();
+                    }
+                });
+            }else{
+                $(InputSelect__Content + ' ' + InputSelect__Item).removeClass(InputSelect__Item_Hidden)
+                    .addClass(InputSelect__Item_Visible)
+                    .slideDown();
+            }
+
+        });
+    };
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Select
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    var Script = function () {
+        $(document).on('click', Script__Element, function () {
+            return false;
+        });
+    };
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    Dropdown();
+    InputSelect();
+    Script();
+})(jQuery);
