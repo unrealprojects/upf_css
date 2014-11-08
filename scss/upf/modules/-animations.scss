@@ -1,0 +1,23 @@
+@include Keyframes(FadeIn)
+{
+	from
+	{
+		opacity: 0;
+	}
+	to
+	{
+		opacity: 1;
+	}
+}
+
+@include Keyframes(FadeOut)
+{
+	from
+	{
+		opacity: 1;
+	}
+	to
+	{
+		opacity: 0;
+	}
+}

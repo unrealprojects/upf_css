@@ -1,6 +1,11 @@
 @import "-variables";
 @import "../../../scss/upf/upf";
 
+body
+{
+	@include Animation(FadeIn,2s);
+}
+
 .Test
 {
     max-width: 1600px;

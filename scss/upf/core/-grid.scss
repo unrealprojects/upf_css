@@ -132,14 +132,14 @@ ul[class*='#{$Grid-Name}'] > li
 					{
 						@if ($Viewport-Iterator == 1)
 						{
-							.#{$Node-Name}-#{$Fraction-Numerator}-#{$Fraction-Denominator}
+							.#{$Grid-Name} .#{$Node-Name}-#{$Fraction-Numerator}-#{$Fraction-Denominator}
 							{
 								width: Width-Set(Fraction, Merge, $Fraction-Numerator, $Fraction-Denominator);
 							}
 						}
 						@else
 						{
-							.#{$Node-Name}-#{nth($Viewports-Prefix, $Viewport-Iterator)}-#{$Fraction-Numerator}-#{$Fraction-Denominator}
+							.#{$Grid-Name} .#{$Node-Name}-#{nth($Viewports-Prefix, $Viewport-Iterator)}-#{$Fraction-Numerator}-#{$Fraction-Denominator}
 							{
 								width: Width-Set(Fraction, Merge, $Fraction-Numerator, $Fraction-Denominator);
 							}
@@ -183,14 +183,14 @@ ul[class*='#{$Grid-Name}'] > li
 				{
 					@if ($Viewport-Iterator == 1)
 					{
-						.#{$Node-Name}-#{$Fraction-Numerator}
+						.#{$Grid-Name} .#{$Node-Name}-#{$Fraction-Numerator}
 						{
 							width: Width-Set(Column, Merge, $Fraction-Numerator);
 						}
 					}
 					@else
 					{
-						.#{$Node-Name}-#{nth($Viewports-Prefix, $Viewport-Iterator)}-#{$Fraction-Numerator}
+						.#{$Grid-Name} .#{$Node-Name}-#{nth($Viewports-Prefix, $Viewport-Iterator)}-#{$Fraction-Numerator}
 						{
 							width: Width-Set(Column, Merge, $Fraction-Numerator);
 						}

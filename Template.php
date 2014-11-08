@@ -17,6 +17,33 @@
                     $(this).toggleClass('Active');
                     $('.Search-Content').toggleClass('Expanded');
                 });
+
+                var scrollTimeout;  // global for any pending scrollTimeout
+                var Header_Height = 50;
+                var Header_Container = $('#Page-Header');
+
+                $(window).scroll(function()
+                {
+                    if (scrollTimeout)
+                    {
+                        clearTimeout(scrollTimeout);
+                        scrollTimeout = null;
+                    }
+                    scrollTimeout = setTimeout(scrollHandler, 250);
+                });
+
+                scrollHandler = function () {
+
+                    if ($(window).scrollTop() > Header_Height)
+                    {
+                        Header_Container.addClass('Sticky');
+                    }
+                    else
+                    {
+                        Header_Container.removeClass('Sticky');
+                    }
+                };
+
             });
         </script>
 
@@ -32,37 +59,40 @@
     </head>
     <body>
     <div class="Page-Wrapper">
-    <div class="Page-Header">
-        <span class="Hamburger" href="#"></span>
-        <a class="Page-Logotype" href="/"><span class="Darken">Uni</span>formity</a>
-        <a class="Search" href="#"></a>
-        <nav class="Page-Navigation">
-            <ul class="Page-Navigation-List">
-                <li class="Page-Navigation-Item">
-                    <a class="Page-Navigation-Link" href="/variables">Variables</a>
-                </li>
-                <li class="Page-Navigation-Item">
-                    <a class="Page-Navigation-Link Active" href="/grid">Grid</a>
-                </li>
-                <li class="Page-Navigation-Item">
-                    <a class="Page-Navigation-Link" href="/forms">Forms</a>
-                </li>
-                <li class="Page-Navigation-Item">
-                    <a class="Page-Navigation-Link" href="/typography">Typography</a>
-                </li>
-                <li class="Page-Navigation-Item">
-                    <a class="Page-Navigation-Link" href="/testroom1">Test Room One</a>
-                </li>
-            </ul>
-        </nav>
-        <div class="Search-Content">
-            <div class="Control-Group">
-                <div class="Input-Group">
-                    <input type="text"/>
-                    <button>Search</button>
+    <div id="Page-Header">
+        <div id="Page-Header-Wrap">
+            <span class="Hamburger" href="#"></span>
+            <a class="Page-Logotype" href="/"><span class="Darken">Uni</span>formity</a>
+            <a class="Search" href="#"></a>
+            <nav class="Page-Navigation">
+                <ul class="Page-Navigation-List">
+                    <li class="Page-Navigation-Item">
+                        <a class="Page-Navigation-Link" href="/variables">Variables</a>
+                    </li>
+                    <li class="Page-Navigation-Item">
+                        <a class="Page-Navigation-Link Active" href="/grid">Grid</a>
+                    </li>
+                    <li class="Page-Navigation-Item">
+                        <a class="Page-Navigation-Link" href="/forms">Forms</a>
+                    </li>
+                    <li class="Page-Navigation-Item">
+                        <a class="Page-Navigation-Link" href="/typography">Typography</a>
+                    </li>
+                    <li class="Page-Navigation-Item">
+                        <a class="Page-Navigation-Link" href="/testroom1">Test Room One</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="Search-Content">
+                <div class="Control-Group">
+                    <div class="Input-Group Addon Grid">
+                        <input class="Col-9" type="text"/>
+                        <button class="Button Primary Col-3 Postfix">Search</button>
+                    </div>
                 </div>
             </div>
         </div>
+        <hr id="Page-Header-Shadow"/>
     </div>
 
 

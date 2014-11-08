@@ -3,14 +3,26 @@ $Navbar-Color-Body:			#e1e1e1;
 $Navbar-Color-UI:			#d0d0d0;
 $Navbar-Color-Main:			#e74c3c;
 
-.Page-Header
+#Page-Header
 {
-	@extend %Clearfix;
 	display: table;
 	position: relative;
 	width: 100%;
 	height: 50px;
-	background-color: $Navbar-Color-Accent;
+
+	#Page-Header-Wrap
+	{
+		@extend %Clearfix;
+		top: 0;
+		width: 100%;
+		background-color: rgba(darken($Navbar-Color-Accent,20%), 0.8);
+	}
+
+	&.Sticky #Page-Header-Wrap
+	{
+		position: fixed;
+		@include Animation(FadeIn,$Animation-Duration-Long);
+	}
 
 	.Hamburger
 	{
@@ -54,12 +66,26 @@ $Navbar-Color-Main:			#e74c3c;
 	}
 
 }
+#Page-Header-Shadow
+{
+	display: none;
+	height: 50px;
+	visibility: hidden;
+	clear: both;
+	margin: 0;
+}
+.Sticky
+{
+	#Page-Header-Shadow
+	{
+		display: block;
+	}
+}
 
 a.Page-Logotype
 {
 	@extend %Margin-Top-None;
-
-	display: table-cell;
+	display: block;
 	width: 100%;
 	text-align: center;
 	line-height: 50px;
@@ -179,6 +205,8 @@ a.Page-Navigation-Link
 	padding: 30px;
 	background-color: $Navbar-Color-Body;
 	border-bottom: 1px solid $Navbar-Color-UI;
+
+	@include Animation(FadeIn,$Animation-Duration-Long);
 
 	@include Adaptive-Mobile
 	{
