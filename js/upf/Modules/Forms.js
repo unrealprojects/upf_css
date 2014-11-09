@@ -36,8 +36,10 @@
         InputSelect__Collapsed =            'Collapsed',
         InputSelect__Expanded =             'Expanded',
 
+        InputSelect__Item_Same =            'Same',
         InputSelect__Item_Hidden =          'Hidden',
         InputSelect__Item_Visible =         'Visible',
+
 
         // Multi Select
         InputSelect__Checkbox =             'input[type=checkbox]',
@@ -123,7 +125,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Todo::recent item
     // Todo::Multiselect Div
-
+    // Todo::Sort (Value,Index)
 
     var InputSelect = function () {
         // Todo::Show-Hide InputSelect__Clean
@@ -202,38 +204,63 @@
             }
         });
 
+
         // Type
         $(document).on('keyup', InputSelect__Element + ' ' + InputSelect__Input_Value, function () {
 
             var Filters = $(this).val().toLowerCase().split(' ');
+            var $Item = $(InputSelect__Content + ' ' + InputSelect__Item, $(this).parent());
 
             // Set Visible
             if (Filters[0].length > 0) {
-                $(InputSelect__Content + ' ' + InputSelect__Item, $(this).parent()).removeClass(InputSelect__Item_Visible + ' ' + InputSelect__Item_Hidden);
+                $Item.removeClass(InputSelect__Item_Visible + ' ' + InputSelect__Item_Hidden + ' ' + InputSelect__Item_Same);
 
-                $(InputSelect__Content + ' ' + InputSelect__Item, $(this).parent()).each(function (ItemKey, Item) {
+                $Item.each(function (ItemKey, Item) {
                     $.each(Filters, function (FilterKey, Filter) {
                         if (Filter.length) {
-                            if ($(Item).text().toLowerCase().indexOf(Filter) >= 0 && !$(Item).hasClass(InputSelect__Item_Hidden)) {
+                            if ( $(Item).text().toLowerCase().search(Filter)>=0 && !$(Item).hasClass(InputSelect__Item_Hidden)) {
                                 $(Item).addClass(InputSelect__Item_Visible);
                             } else {
                                 $(Item).addClass(InputSelect__Item_Hidden)
                                     .removeClass(InputSelect__Item_Visible);
+
+                                // Same Items
+                                if(Filter.length>2){
+                                    for(var I=0;I<Filter.length;I++ ){
+                                        var Same = new RegExp(Filter.substr(0,I) + '[^]' + Filter.substr(I+1,Filter.length));
+
+                                        if ( $(Item).text().toLowerCase().search(Same)>=0 && $(Item).hasClass(InputSelect__Item_Hidden)) {
+                                            if(FilterKey == 0){
+                                                $(Item).addClass(InputSelect__Item_Same).removeClass(InputSelect__Item_Hidden);
+                                            }else if(FilterKey >0 && $(Item).hasClass(InputSelect__Item_Hidden)){
+                                                $(Item).addClass(InputSelect__Item_Same).removeClass(InputSelect__Item_Hidden);
+                                            }else{
+                                                $(Item).removeClass(InputSelect__Item_Same).addClass(InputSelect__Item_Hidden);
+                                            }
+
+                                        }
+                                    }
+                                }
+
                             }
                         }
                     });
                 });
 
                 // Show Visible
-                $(InputSelect__Content + ' .' + InputSelect__Item_Visible).slideDown();
+
                 $(InputSelect__Content + ' .' + InputSelect__Item_Hidden).slideUp();
+                $(InputSelect__Content + ' .' + InputSelect__Item_Visible + ',' + InputSelect__Content + ' .' + InputSelect__Item_Same).slideDown();
+                $().slideDown();
+
             }else{
                 // Todo::Make a Function
-                $(InputSelect__Content + ' ' + InputSelect__Item, $(this).parent()).removeClass(InputSelect__Item_Hidden)
+                $Item.removeClass(InputSelect__Item_Hidden)
                     .addClass(InputSelect__Item_Visible)
                     .slideDown();
             }
         });
+
 
         // Clean
         $(document).on('click', InputSelect__Element + ' ' + InputSelect__Clean, function () {
