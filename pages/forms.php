@@ -108,25 +108,126 @@
                 <span class="Input-Select-Toggle Icon Icon-chevron-down"></span>
 
                 <ul class="Input-Select-Content">
-                    <li data-index="1"><input type="checkbox" name="name1"/><a href="">Archery</a></li>
-                    <li data-index="2"><input type="checkbox"/><a href="">Basketball</a></li>
-                    <li data-index="3"><input type="checkbox"/><a href="">Climbing</a></li>
-                    <li data-index="4"><input type="checkbox"/><a href="">Cycling</a></li>
-                    <li data-index="5"><input type="checkbox"/><a href="">Bicycle</a></li>
-                    <li data-index="6"><input type="checkbox"/><a href="">Grappling</a></li>
-                    <li data-index="8"><input type="checkbox"/><a href="">Striking</a></li>
-                    <li data-index="9"><input type="checkbox"/><a href="">Weapons</a></li>
-                    <li data-index="10"><input type="checkbox"/><a href="">Cue sports</a></li>
-                    <li data-index="11"><input type="checkbox"/><a href="">Dance</a></li>
-                    <li data-index="12"><input type="checkbox"/><a href="">Equine sports</a></li>
-                    <li data-index="13"><input type="checkbox"/><a href="">Fishing</a></li>
-                    <li data-index="14"><input type="checkbox"/><a href="">Football</a></li>
-                    <li data-index="15"><input type="checkbox"/><a href="">Golf</a></li>
-                    <li data-index="16"><input type="checkbox"/><a href="">Gymnastics</a></li>
-                    <li data-index="17"><input type="checkbox"/><a href="">Hunting</a></li>
-                    <li data-index="18"><input type="checkbox"/><a href="">Ice sports</a></li>
-                    <li data-index="19"><input type="checkbox"/><a href="">Kite sports</a></li>
-                    <li data-index="20"><input type="checkbox"/><a href="">Motorized sports</a></li>
+                    <li data-index="1">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Archery
+                        </label>
+                    </li>
+                    <li data-index="2">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Basketball
+                        </label>
+                    </li>
+                    <li data-index="3">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Climbing
+                        </label>
+                    </li>
+                    <li data-index="4">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Cycling
+                        </label>
+                    </li>
+                    <li data-index="5">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Bicycle
+                        </label>
+                    </li>
+                    <li data-index="6">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Grappling
+                        </label>
+                    </li>
+                    <li data-index="7">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Striking
+                        </label>
+                    </li>
+                    <li data-index="8">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Soccer
+                        </label>
+                    </li>
+                    <li data-index="9">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Weapons
+                        </label>
+                    </li>
+                    <li data-index="10">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Cue sports
+                        </label>
+                    </li>
+                    <li data-index="11">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Dance
+                        </label>
+                    </li>
+                    <li data-index="12">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Equine sports
+                        </label>
+                    </li>
+                    <li data-index="13">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Fishing
+                        </label>
+                    </li>
+                    <li data-index="14">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Football
+                        </label>
+                    </li>
+                    <li data-index="15">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Golf
+                        </label>
+                    </li>
+                    <li data-index="16">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Gymnastics
+                        </label>
+                    </li>
+                    <li data-index="17">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Hunting
+                        </label>
+                    </li>
+                    <li data-index="18">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Ice sports
+                        </label>
+                    </li>
+                    <li data-index="19">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Kite sports
+                        </label>
+                    </li>
+                    <li data-index="20">
+                        <label>
+                            <input type="checkbox" name="name1"/>
+                            Motorized sports
+                        </label>
+                    </li>
                 </ul>
             </div>
         </div>

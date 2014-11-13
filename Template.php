@@ -44,6 +44,14 @@
                     }
                 };
 
+                var Active_Tab;
+                var Previous_Tab;
+
+                $('.Tab-Button-Item').click(function(){
+                    $('.Tab-Button-Item').removeClass('Active');
+                    $(this).addClass('Active');
+                });
+
             });
         </script>
 
@@ -77,6 +85,9 @@
                     </li>
                     <li class="Page-Navigation-Item">
                         <a class="Page-Navigation-Link" href="/typography">Typography</a>
+                    </li>
+                    <li class="Page-Navigation-Item">
+                        <a class="Page-Navigation-Link" href="/elements">Elements</a>
                     </li>
                     <li class="Page-Navigation-Item">
                         <a class="Page-Navigation-Link" href="/testroom1">Test Room One</a>

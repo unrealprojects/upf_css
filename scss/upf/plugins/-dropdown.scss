@@ -48,7 +48,8 @@
 		{
 			@extend 				%Margin-Top-None;
 		}
-		a
+		a,
+		& > label
 		{
 			display: 				block;
 			padding: 				$Control-Padding-Vertical $Control-Padding-Horizontal;

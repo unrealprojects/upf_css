@@ -13,7 +13,7 @@
         </dt>
         <dd>
             Enables or disables import of <code class="Inline">-reset.scss</code> file. Default value is <code class="Inline">true</code>.
-            UPFCSS is using this reset, so changing variable to <code class="Inline">false</code> will break some styles. Proceed with caution!
+            Uniformity is using this reset, so changing variable to <code class="Inline">false</code> will break some styles. Proceed with caution!
         </dd>
         <dt>
             <code class="Inline">$Global-Content-Spacing</code>

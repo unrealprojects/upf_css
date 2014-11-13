@@ -1,3 +1,5 @@
+$Navbar-Height:				40px;
+
 $Navbar-Color-Accent:		#424242;
 $Navbar-Color-Body:			#e1e1e1;
 $Navbar-Color-UI:			#d0d0d0;
@@ -8,7 +10,7 @@ $Navbar-Color-Main:			#e74c3c;
 	display: table;
 	position: relative;
 	width: 100%;
-	height: 50px;
+	height: $Navbar-Height;
 
 	#Page-Header-Wrap
 	{
@@ -21,6 +23,7 @@ $Navbar-Color-Main:			#e74c3c;
 	&.Sticky #Page-Header-Wrap
 	{
 		position: fixed;
+		z-index: 100;
 		@include Animation(FadeIn,$Animation-Duration-Long);
 	}
 
@@ -29,7 +32,7 @@ $Navbar-Color-Main:			#e74c3c;
 		@extend .Hidden-XS;
 		@extend .Icon, .Icon-reorder;
 		left: 10px;
-		padding: 15px 20px;
+		padding: (($Navbar-Height / 2) - 12px ) 20px 0;
 
 		&:before
 		{
@@ -40,7 +43,7 @@ $Navbar-Color-Main:			#e74c3c;
 	{
 		@extend .Icon, .Icon-search;
 		right: 10px;
-		padding: 13px 20px;
+		padding: (($Navbar-Height / 2) - 12px ) 20px 0;
 		&:before
 		{
 			font-size: 19px;
@@ -54,7 +57,7 @@ $Navbar-Color-Main:			#e74c3c;
 		@extend %Margin-Top-None;
 		position: absolute;
 		top: 0px;
-		height: 50px;
+		height: $Navbar-Height;
 		color: #fff;
 
 		&:hover,
@@ -69,7 +72,7 @@ $Navbar-Color-Main:			#e74c3c;
 #Page-Header-Shadow
 {
 	display: none;
-	height: 50px;
+	height: $Navbar-Height;
 	visibility: hidden;
 	clear: both;
 	margin: 0;
@@ -88,7 +91,7 @@ a.Page-Logotype
 	display: block;
 	width: 100%;
 	text-align: center;
-	line-height: 50px;
+	line-height: $Navbar-Height;
 	font-weight: 700;
 	font-style: italic;
 	font-size: 24px;
@@ -121,7 +124,7 @@ a.Page-Logotype
 	{
 		display: none;
 		position: absolute;
-		top: 50px;
+		top: $Navbar-Height;
 		left: 0;
 		right: 0;
 		width: 100%;
@@ -178,7 +181,7 @@ a.Page-Navigation-Link
 	{
 		display: table-cell;
 		padding: 0 20px;
-		line-height: 50px;
+		line-height: $Navbar-Height;
 		color: #fff;
 
 		&:hover
@@ -200,7 +203,7 @@ a.Page-Navigation-Link
 	@extend %Margin-Top-None;
 	display: none;
 	position: absolute;
-	top: 50px;
+	top: $Navbar-Height;
 	right: 0;
 	padding: 30px;
 	background-color: $Navbar-Color-Body;
