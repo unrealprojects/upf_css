@@ -1,69 +1,5 @@
-(function($){
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Dropdown Settings
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    var Dropdown__Element =     '.Dropdown',
-        Dropdown__Content =     '.Dropdown-Content',
-        Dropdown__Title =       '.Dropdown-Title',
-        Dropdown__Toggle =      '.Dropdown-Toggle',
-
-        Dropdown__Collapsed =   'Collapsed',
-        Dropdown__Expanded =    'Expanded',
-
-        Dropdown__Duration =     160;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Input - Select Settings
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    var InputSelect__Element =              '.Input-Select',
-        InputSelect__Content =              '.Input-Select-Content',
-        InputSelect__Item =                 'li',
-        InputSelect__Clean =                '.Input-Select-Clean',
-        InputSelect__Toggle =               '.Input-Select-Toggle',
-        InputSelect__Input_Value =          'input[type=text]',
-        InputSelect__Input_Index =          'input[type=hidden]',
-
-        InputSelect__Collapsed =            'Collapsed',
-        InputSelect__Expanded =             'Expanded',
-
-        InputSelect__Item_Same =            'Same',
-        InputSelect__Item_Hidden =          'Hidden',
-        InputSelect__Item_Visible =         'Visible',
-
-
-        // Multi Select
-        InputSelect__Checkbox =             'input[type=checkbox]',
-
-        InputSelect__Data_Index =           'data-index',
-        InputSelect__Data_Selected_Index =  'data-selected-index',
-        InputSelect__Data_Multi_Select =    'data-multi-select',// Available values: checkbox, tag, column ,drag-column
-
-        InputSelect__Duration =             120;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Script Settings
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    var Script__Element = '.Script';
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    (function ($)
+    {
 
 
 
@@ -71,46 +7,25 @@
 
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Dropdown
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    var Dropdown = function () {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Dropdown Settings
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // Presets
-        $(Dropdown__Element).addClass(Dropdown__Collapsed);
-        var Toggle = false;
+        var Dropdown = {
+            // Selectors
+            Element:   '.Dropdown',
+            Content:   '.Dropdown-Content',
+            Title:     '.Dropdown-Title',
+            Toggle:    '.Dropdown-Toggle',
+            // Switches
+            Collapsed: 'Collapsed',
+            Expanded:  'Expanded',
+            // Extended
+            Duration:  160
+        };
 
-        // Body
-        $(document).on('click', Dropdown__Title, function () {
-            $(Dropdown__Element + '.' + Dropdown__Expanded).not($(this).parent()).find(Dropdown__Content).slideUp(Dropdown__Duration);
-            $(Dropdown__Element + '.' + Dropdown__Expanded).not($(this).parent()).find(Dropdown__Toggle).animate({transform: 'rotate(0deg)'}, Dropdown__Duration);
-            $(Dropdown__Element + '.' + Dropdown__Expanded).not($(this).parent()).removeClass(Dropdown__Expanded).addClass(Dropdown__Collapsed);
-
-            $(this).parents(Dropdown__Element).find(Dropdown__Content).slideToggle(Dropdown__Duration);
-            $(this).parents(Dropdown__Element).toggleClass(Dropdown__Collapsed + ' ' + Dropdown__Expanded);
-
-            // Toggle Button
-            if (!Toggle) {
-                $(this).parents(Dropdown__Element).find(Dropdown__Toggle).animate({transform: 'rotate(-180deg)'}, Dropdown__Duration);
-                Toggle = true;
-            } else {
-                $(this).parents(Dropdown__Element).find(Dropdown__Toggle).animate({transform: 'rotate(0deg)'}, Dropdown__Duration);
-                Toggle = false;
-            }
-
-            return false;
-        });
-
-        // Focus Out
-        $(document).on('click', 'body', function () {
-            $(Dropdown__Element + '.' + Dropdown__Expanded).find(Dropdown__Content).slideUp(Dropdown__Duration);
-            $(Dropdown__Element + '.' + Dropdown__Expanded).find(Dropdown__Toggle).animate({transform: 'rotate(0deg)'}, Dropdown__Duration);
-            $(Dropdown__Element + '.' + Dropdown__Expanded).removeClass(Dropdown__Expanded).addClass(Dropdown__Collapsed);
-        });
-    };
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -120,181 +35,380 @@
 
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Input Select
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Todo::recent item
-    // Todo::Multiselect Div
-    // Todo::Sort (Value,Index)
 
-    var InputSelect = function () {
-        // Todo::Show-Hide InputSelect__Clean
-        // Todo:: data-ajax
-        // Todo:: data-multi-select
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // InputSelect Settings
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        function MultiSelect_Type(Selector) {
-            var Type = $(Selector).attr(InputSelect__Data_Multi_Select);
-            if (Type == 'checkbox' || Type == 'tag' || Type == 'column' || Type == 'drag-column') {
-                return Type;
-            }else{
-                Type = false;
-                return Type;
-            }
+        var InputSelect = {
+            // Selectors
+            Element:                    '.Input-Select  ',
+            Content:                    '.Input-Select-Content',
+            Item:                       'li',
+            Clean:                      '.Input-Select-Clean',
+            Toggle:                     '.Input-Select-Toggle',
+            Input_Value:                'input[type=text]',
+            Input_Index:                'input[type=hidden]',
+            // Switches
+            Collapsed:                  'Collapsed',
+            Expanded:                   'Expanded',
+            Item_Same:                  'Same',
+            Item_Hidden:                'Hidden',
+            Item_Visible:               'Visible',
+            // MultiSelect :: Selectors
+            Checkbox:                   'input[type=checkbox]',
+            // Data-Types
+            Data_Same_Items:            'data-same-items',             // Available values: true, false
+            Data_Same_Items__Default:   'false',
+            // MultiSelect :: Data-Types
+            Data_Index:                 'data-index',
+            Data_Selected_Index:        'data-selected-index',
+            Data_Multi_Select:          'data-multi-select',           // Available values: checkbox, tag, column ,drag-column
+            Data_Multi_Select__Default: 'checkbox',
+            // Extended
+            Duration:                   120
+        };
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Script Settings
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        var Script = {
+            Element: '.Script'
+        };
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Execute
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        Forms__Dropdown();
+        Forms__InputSelect();
+        Forms__Script();
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Dropdown
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        function Forms__Dropdown()
+        {
+
+            // Presets
+            $(Dropdown.Element).addClass(Dropdown.Collapsed);
+            var Toggle = false;
+
+            // Body
+            $(document).on('click', Dropdown.Title, function ()
+            {
+                $(Dropdown.Element + '.' + Dropdown.Expanded).not($(this).parent()).find(Dropdown.Content).slideUp(Dropdown.Duration);
+                $(Dropdown.Element + '.' + Dropdown.Expanded).not($(this).parent()).find(Dropdown.Toggle).animate({transform: 'rotate(0deg)'}, Dropdown.Duration);
+                $(Dropdown.Element + '.' + Dropdown.Expanded).not($(this).parent()).removeClass(Dropdown.Expanded).addClass(Dropdown.Collapsed);
+
+                $(this).parents(Dropdown.Element).find(Dropdown.Content).slideToggle(Dropdown.Duration);
+                $(this).parents(Dropdown.Element).toggleClass(Dropdown.Collapsed + ' ' + Dropdown.Expanded);
+
+                // Toggle Button
+                if (!Toggle)
+                {
+                    $(this).parents(Dropdown.Element).find(Dropdown.Toggle).animate({transform: 'rotate(-180deg)'}, Dropdown.Duration);
+                    Toggle = true;
+                } else
+                {
+                    $(this).parents(Dropdown.Element).find(Dropdown.Toggle).animate({transform: 'rotate(0deg)'}, Dropdown.Duration);
+                    Toggle = false;
+                }
+
+                return false;
+            });
+
+            // Focus Out
+            $(document).on('click', 'body', function ()
+            {
+                $(Dropdown.Element + '.' + Dropdown.Expanded).find(Dropdown.Content).slideUp(Dropdown.Duration);
+                $(Dropdown.Element + '.' + Dropdown.Expanded).find(Dropdown.Toggle).animate({transform: 'rotate(0deg)'}, Dropdown.Duration);
+                $(Dropdown.Element + '.' + Dropdown.Expanded).removeClass(Dropdown.Expanded).addClass(Dropdown.Collapsed);
+            });
         }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // Show List
-        $(document).on('click', InputSelect__Element, function () {
 
-            $(InputSelect__Content, this).slideDown(InputSelect__Duration, function () {
-                $(this).parent()
-                    .addClass(InputSelect__Expanded)
-                    .removeClass(InputSelect__Collapsed);
-                $(InputSelect__Toggle, $(this).parent()).animate({transform: 'rotate(180deg)'}, InputSelect__Duration);
-            });
 
-            return false;
-        });
 
-        // Hide List (Body)
-        $(document).on('click', 'body' , function () {
-            $(InputSelect__Content).slideUp(InputSelect__Duration, function () {
-                $(this).parent()
-                    .addClass(InputSelect__Collapsed)
-                    .removeClass(InputSelect__Expanded);
-                $(InputSelect__Toggle, $(this).parent()).animate({transform: 'rotate(0deg)'}, InputSelect__Duration);
-            });
-        });
 
-        // Hide List (Toggle)
-        $(document).on('click', InputSelect__Toggle , function () {
-            var $BaseElement = $(this).parents(InputSelect__Element);
 
-            if($BaseElement.hasClass(InputSelect__Expanded)){
-                $BaseElement.find(InputSelect__Content).slideUp(InputSelect__Duration, function () {
-                    $BaseElement
-                        .addClass(InputSelect__Collapsed)
-                        .removeClass(InputSelect__Expanded);
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Input Select
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Todo :: Same Items (In List And Under the Line)
+        // Todo :: MultiSelect Div
+        // Todo :: Sort ( Value (ASC,DESC) ,Index (ASC,DESC), Length (ASC,DESC) )
+
+
+        function Forms__InputSelect()
+        {
+            // Todo::Show-Hide InputSelect.Clean
+            // Todo:: data-ajax
+            // Todo:: data-multi-select
+
+            function MultiSelect_Type(Selector)
+            {
+                var Type = $(Selector).attr(InputSelect.Data_Multi_Select);
+                if (Type == 'checkbox' || Type == 'tag' || Type == 'column' || Type == 'drag-column')
+                {
+                    return Type;
+                } else
+                {
+                    Type = false;
+                    return Type;
+                }
+            }
+
+
+            // Show List
+            $(document).on('click', InputSelect.Element, function ()
+            {
+                // Hide Other Selects
+                $(InputSelect.Content).not($(InputSelect.Content,this)).slideUp(InputSelect.Duration, function ()
+                {
+                    $(this).parent()
+                        .addClass(InputSelect.Collapsed)
+                        .removeClass(InputSelect.Expanded);
+                    $(InputSelect.Toggle, $(this).parent()).animate({transform: 'rotate(0deg)'}, InputSelect.Duration);
                 });
-                $(this).animate({transform: 'rotate(0deg)'}, InputSelect__Duration);
 
-            }else{
-                $BaseElement.trigger('click');
-            }
+                $(InputSelect.Content, this).slideDown(InputSelect.Duration, function ()
+                {
+                    $(this).parent()
+                        .addClass(InputSelect.Expanded)
+                        .removeClass(InputSelect.Collapsed);
+                    $(InputSelect.Toggle, $(this).parent()).animate({transform: 'rotate(180deg)'}, InputSelect.Duration);
+                });
 
-            return false;
-        });
+                return false;
+            });
+
+            // Hide List (Body)
+            $(document).on('click', 'body', function ()
+            {
+                $(InputSelect.Content).slideUp(InputSelect.Duration, function ()
+                {
+                    $(this).parent()
+                        .addClass(InputSelect.Collapsed)
+                        .removeClass(InputSelect.Expanded);
+                    $(InputSelect.Toggle, $(this).parent()).animate({transform: 'rotate(0deg)'}, InputSelect.Duration);
+                });
+            });
+
+            // Hide List (Toggle)
+            $(document).on('click', InputSelect.Toggle, function ()
+            {
+                var $BaseElement = $(this).parents(InputSelect.Element);
+
+                if ($BaseElement.hasClass(InputSelect.Expanded))
+                {
+                    $BaseElement.find(InputSelect.Content).slideUp(InputSelect.Duration, function ()
+                    {
+                        $BaseElement
+                            .addClass(InputSelect.Collapsed)
+                            .removeClass(InputSelect.Expanded);
+                    });
+                    $(this).animate({transform: 'rotate(0deg)'}, InputSelect.Duration);
+
+                } else
+                {
+                    $BaseElement.trigger('click');
+                }
+
+                return false;
+            });
 
 
-        // Add Selected Value
-        $(document).on('click', InputSelect__Content + ' ' + InputSelect__Item, function () {
-            var $BaseElement = $(this).parents(InputSelect__Element);
+            // Default Selected Value
+            // Todo :: Different Type Of Selected (selected="selected", other key and inputs)
+            // Todo :: In MultiSelect
+            $(InputSelect.Element).each(function(ElementKey,Element){
+                $(InputSelect.Item, Element).each(function(ItemKey,Item){
+                    if($(Item).attr('selected'))
+                    {
+                        $(InputSelect.Input_Value, Element).val($(Item).text());
+                        $(InputSelect.Input_Index, Element).val($(Item).attr(InputSelect.Data_Selected_Index));
+                        return false;
+                    }
+                });
+            });
+
+            // Add Selected Value
+            $(document).on('click', InputSelect.Content + ' ' + InputSelect.Item, function ()
+            {
+                var $BaseElement = $(this).parents(InputSelect.Element);
 
 
+                if ($BaseElement.attr(InputSelect.Data_Multi_Select) == 'checkbox')
+                {
+                    //Multi Select Checkbox
+                    var $Checkbox = $(this).find(InputSelect.Checkbox);
+                    $Checkbox.prop('checked', !$Checkbox.prop("checked"));
+                } else
+                {
+                    // Select
+                    $BaseElement.attr(InputSelect.Data_Selected_Index, $(this).attr(InputSelect.Data_Index));
+                    $(InputSelect.Input_Index, $BaseElement).val($(this).attr(InputSelect.Data_Index));
+                    $(InputSelect.Input_Value, $BaseElement).val($(this).text());
+                }
+            });
 
-            if($BaseElement.attr(InputSelect__Data_Multi_Select)=='checkbox'){
-                //Multi Select Checkbox
-                var $Checkbox = $(this).find(InputSelect__Checkbox);
-                $Checkbox.prop('checked', !$Checkbox.prop("checked"));
-            }else{
-                // Select
-                $BaseElement.attr(InputSelect__Data_Selected_Index, $(this).attr(InputSelect__Data_Index));
-                $(InputSelect__Input_Index, $BaseElement).val($(this).attr(InputSelect__Data_Index));
-                $(InputSelect__Input_Value, $BaseElement).val($(this).text());
-            }
-        });
+            // Type
+            $(document).on('keyup', InputSelect.Element + ' ' + InputSelect.Input_Value, function ()
+            {
 
+                var ButtonKey = event.which;
 
-        // Type
-        $(document).on('keyup', InputSelect__Element + ' ' + InputSelect__Input_Value, function () {
+                if (ButtonKey == 32 || (48 <= ButtonKey && ButtonKey <= 57) || (65 <= ButtonKey && ButtonKey <= 90) || (97 <= ButtonKey && ButtonKey <= 122) || ButtonKey == 8)
+                {
 
-            var Filters = $(this).val().toLowerCase().split(' ');
-            var $Item = $(InputSelect__Content + ' ' + InputSelect__Item, $(this).parent());
+                    var Filters = $(this).val().toLowerCase().split(' ');
+                    var $Item = $(InputSelect.Content + ' ' + InputSelect.Item, $(this).parent());
 
-            // Set Visible
-            if (Filters[0].length > 0) {
-                $Item.removeClass(InputSelect__Item_Visible + ' ' + InputSelect__Item_Hidden + ' ' + InputSelect__Item_Same);
+                    // Set Visible
+                    if (Filters[0].length > 0)
+                    {
+                        $Item.removeClass(InputSelect.Item_Visible + ' ' + InputSelect.Item_Hidden + ' ' + InputSelect.Item_Same);
 
-                $Item.each(function (ItemKey, Item) {
-                    $.each(Filters, function (FilterKey, Filter) {
-                        if (Filter.length) {
-                            if ( $(Item).text().toLowerCase().search(Filter)>=0 && !$(Item).hasClass(InputSelect__Item_Hidden)) {
-                                $(Item).addClass(InputSelect__Item_Visible);
-                            } else {
-                                $(Item).addClass(InputSelect__Item_Hidden)
-                                    .removeClass(InputSelect__Item_Visible);
+                        $Item.each(function (ItemKey, Item)
+                        {
 
-                                // Same Items
-                                if(Filter.length>2){
-                                    for(var I=0;I<Filter.length;I++ ){
-                                        var Same = new RegExp(Filter.substr(0,I) + '[^]' + Filter.substr(I+1,Filter.length));
-
-                                        if ( $(Item).text().toLowerCase().search(Same)>=0 && $(Item).hasClass(InputSelect__Item_Hidden)) {
-                                            if(FilterKey == 0){
-                                                $(Item).addClass(InputSelect__Item_Same).removeClass(InputSelect__Item_Hidden);
-                                            }else if(FilterKey >0 && $(Item).hasClass(InputSelect__Item_Hidden)){
-                                                $(Item).addClass(InputSelect__Item_Same).removeClass(InputSelect__Item_Hidden);
-                                            }else{
-                                                $(Item).removeClass(InputSelect__Item_Same).addClass(InputSelect__Item_Hidden);
-                                            }
-
-                                        }
+                            // Exact Items
+                            $.each(Filters, function (FilterKey, Filter)
+                            {
+                                if (Filter.length)
+                                {
+                                    if ($(Item).text().toLowerCase().search(Filter) >= 0 && !$(Item).hasClass(InputSelect.Item_Hidden))
+                                    {
+                                        $(Item).addClass(InputSelect.Item_Visible);
+                                    } else
+                                    {
+                                        $(Item).addClass(InputSelect.Item_Hidden)
+                                            .removeClass(InputSelect.Item_Visible);
                                     }
                                 }
+                            });
 
-                            }
-                        }
-                    });
-                });
+                            // Same Items
+                            $.each(Filters, function (FilterKey, Filter)
+                            {
+                                if (Filter.length > 2)
+                                {
+                                    var Same = '',
+                                        CircleSame = false;
+                                    for (var I = 0; I <= Filter.length; I++)
+                                    {
 
-                // Show Visible
+                                        if (I < Filter.length)
+                                        {
+                                            Same = new RegExp(Filter.substr(0, I) + '[^]' + Filter.substr(I + 1, Filter.length));
+                                        } else
+                                        {
+                                            Same = Filter;
+                                        }
 
-                $(InputSelect__Content + ' .' + InputSelect__Item_Hidden).slideUp();
-                $(InputSelect__Content + ' .' + InputSelect__Item_Visible + ',' + InputSelect__Content + ' .' + InputSelect__Item_Same).slideDown();
-                $().slideDown();
+                                        if ($(Item).text().toLowerCase().search(Same) >= 0)
+                                        {
+                                            if (FilterKey == 0 && $(Item).hasClass(InputSelect.Item_Hidden))
+                                            {
+                                                $(Item).addClass(InputSelect.Item_Same)
+                                                    .removeClass(InputSelect.Item_Hidden);
+                                            }
+                                            else if ($(Item).text().toLowerCase().search(Same) >= 0 && FilterKey > 0 && $(Item).hasClass(InputSelect.Item_Same))
+                                            {
+                                                CircleSame = true;
+                                                $(Item).addClass(InputSelect.Item_Same)
+                                                    .removeClass(InputSelect.Item_Hidden);
+                                            }
+                                        }
 
-            }else{
+                                    }
+
+
+                                    // More Than One Coincidence
+                                    if (CircleSame == false && FilterKey > 0)
+                                    {
+                                        $(Item).removeClass(InputSelect.Item_Same).addClass(InputSelect.Item_Hidden);
+                                    }
+
+                                }
+                            });
+
+
+                        });
+
+
+                        // Show Visible
+
+                        $(InputSelect.Content + ' .' + InputSelect.Item_Hidden).slideUp();
+                        $(InputSelect.Content + ' .' + InputSelect.Item_Visible + ',' + InputSelect.Content + ' .' + InputSelect.Item_Same).slideDown();
+
+                    } else
+                    {
+                        // Todo::Make a Function
+                        $Item.removeClass(InputSelect.Item_Hidden)
+                            .addClass(InputSelect.Item_Visible)
+                            .slideDown();
+                    }
+                }
+            });
+
+
+            // Clean
+            $(document).on('click', InputSelect.Element + ' ' + InputSelect.Clean, function ()
+            {
+                $(InputSelect.Input_Index, $(this).parent()).val(' ');
+                $(InputSelect.Input_Value, $(this).parent()).val(' ');
+
                 // Todo::Make a Function
-                $Item.removeClass(InputSelect__Item_Hidden)
-                    .addClass(InputSelect__Item_Visible)
+                $(InputSelect.Content + ' ' + InputSelect.Item, $(this).parent()).removeClass(InputSelect.Item_Hidden)
+                    .addClass(InputSelect.Item_Visible)
                     .slideDown();
-            }
-        });
+            });
+        }
 
-
-        // Clean
-        $(document).on('click', InputSelect__Element + ' ' + InputSelect__Clean, function () {
-            $(InputSelect__Input_Index, $(this).parent()).val(' ');
-            $(InputSelect__Input_Value, $(this).parent()).val(' ');
-
-            // Todo::Make a Function
-            $(InputSelect__Content + ' ' + InputSelect__Item, $(this).parent()).removeClass(InputSelect__Item_Hidden)
-                .addClass(InputSelect__Item_Visible)
-                .slideDown();
-        });
-
-    };
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Select
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    var Script = function () {
-        $(document).on('click', Script__Element, function () {
-            return false;
-        });
-    };
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -304,15 +418,27 @@
 
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Execute
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    Dropdown();
-    InputSelect();
-    Script();
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Script
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        function Forms__Script()
+        {
+            $(document).on('click', Script.Element, function ()
+            {
+                return false;
+            });
+        }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-})(jQuery);
+
+
+
+
+
+
+
+    })(jQuery);
