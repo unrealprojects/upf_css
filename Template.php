@@ -90,6 +90,9 @@
                         <a class="Page-Navigation-Link" href="/elements">Elements</a>
                     </li>
                     <li class="Page-Navigation-Item">
+                        <a class="Page-Navigation-Link" href="/transform">Transform</a>
+                    </li>
+                    <li class="Page-Navigation-Item">
                         <a class="Page-Navigation-Link" href="/testroom1">Test Room One</a>
                     </li>
                 </ul>
